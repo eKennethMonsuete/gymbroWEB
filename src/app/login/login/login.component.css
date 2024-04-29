@@ -1,0 +1,22 @@
+.left-div, .right-div {
+  height: 100vh; /*Faz as divs ocuparem a altura total da tela */
+  background-color: #f0f0f0;
+  padding: 20px;
+  border: 1px solid #ccc;
+
+}
+
+.outer-div {
+  background-color: #f0f0f0;
+  padding: 20px;
+  border: 1px solid #ccc;
+}
+
+.inner-div, .centered-div {
+  background-color: #fff;
+  padding: 20px;
+}
+
+.centered-div {
+   /* Ajusta a largura máxima da div central */
+}
