@@ -10,6 +10,9 @@ import { UserComponent } from './user/user/user.component';
 import { UserCreateComponent } from './user/user-create/user-create.component';
 import { UserUpdateComponent } from './user/user-update/user-update.component';
 import { UserDeleteComponent } from './user/user-delete/user-delete.component';
+import { WorkoutComponent } from './workout/workout.component';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -20,11 +23,16 @@ import { UserDeleteComponent } from './user/user-delete/user-delete.component';
     UserComponent,
     UserCreateComponent,
     UserUpdateComponent,
-    UserDeleteComponent
+    UserDeleteComponent,
+    WorkoutComponent,
+
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

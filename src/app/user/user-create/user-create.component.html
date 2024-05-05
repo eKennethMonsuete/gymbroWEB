@@ -1,23 +1,48 @@
 <div class=".container-fluid-lg marginRightLeft ">
-  <form class="row g-3">
+  <div class="row g-3" (ngSubmit)="registerUser()" >
 
-    <div class="mb-3">
-      <label for="exampleFormControlTextarea1" class="form-label">Escrever Treino</label>
-      <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+    <div class="col-6">
+      <label for="nome" class="form-label">Nome:</label>
+      <input type="text" class="form-control" id="nome" [(ngModel)]="saveUserDTO.name">
     </div>
 
     <div class="col-6">
-      <label for="sobrenome" class="form-label">Obervações:</label>
-      <input type="text" class="form-control" id="sobrenome">
+      <label for="sobrenome" class="form-label">Sobrenome:</label>
+      <input type="text" class="form-control" id="sobrenome" [(ngModel)]="saveUserDTO.surname" >
     </div>
+
+    <div class="col-6">
+      <label for="email" class="form-label">Email:</label>
+      <input type="email" class="form-control" id="email" [(ngModel)]="saveUserDTO.email">
+    </div>
+
+    <div class="col-6">
+      <label for="whatsapp" class="form-label">Whatsapp:</label>
+      <input type="text" class="form-control" id="whatsapp" [(ngModel)]="saveUserDTO.whatsapp">
+    </div>
+
+    <div class="col-6">
+      <label for="senha" class="form-label">Senha:</label>
+      <input type="password" class="form-control" id="senha" [(ngModel)]="saveUserDTO.password">
+    </div>
+
+    <div class="col-6">
+      <label for="repetirSenha" class="form-label">Repetir Senha:</label>
+      <input type="password" class="form-control" id="repetirSenha" [(ngModel)]="saveUserDTO.secondPassword">
+    </div>
+
+
 
 
     <div class="col-12">
-      <button type="submit" class="btn btn-primary">Cadastrar Treino</button>
+      <button (click)="registerUser()" type="submit" class="btn btn-primary">Cadastrar Usuário</button>
       <button type="submit" class="btn  btn-danger">Cancelar</button>
     </div>
 
-
-  </form>
+  </div>
 
 </div>
+
+
+
+

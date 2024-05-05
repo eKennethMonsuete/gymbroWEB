@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MeasuresComponent implements OnInit {
 
+
+
   constructor() { }
 
   ngOnInit(): void {
