@@ -13,6 +13,8 @@ import { UserDeleteComponent } from './user/user-delete/user-delete.component';
 import { WorkoutComponent } from './workout/workout.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { LoginService } from './login/login/login.service';
+import { CreateWorkoutComponent } from './workout/create-workout/create-workout/create-workout.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +27,7 @@ import { FormsModule } from '@angular/forms';
     UserUpdateComponent,
     UserDeleteComponent,
     WorkoutComponent,
+    CreateWorkoutComponent,
 
   ],
   imports: [
@@ -34,7 +37,7 @@ import { FormsModule } from '@angular/forms';
     FormsModule
 
   ],
-  providers: [],
+  providers: [LoginService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

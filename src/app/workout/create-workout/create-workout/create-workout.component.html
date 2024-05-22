@@ -1,0 +1,45 @@
+<div class=".container-fluid-lg marginRightLeft ">
+  <form class="row g-3">
+
+    <div class="mb-3">
+      <label for="workout1" class="form-label">Escrever Treino1</label>
+      <textarea
+      class="form-control"
+      id="exampleFormControlTextarea1"
+      name="workout1"
+      rows="3"
+      [(ngModel)]="workout.workout1"></textarea>
+    </div>
+
+    <div class="mb-3">
+      <label for="workout2" class="form-label">Escrever Treino2</label>
+      <textarea
+      class="form-control"
+      id="exampleFormControlTextarea1"
+      name="workout2"
+      rows="3"
+      [(ngModel)]="workout.workout2"></textarea>
+    </div>
+
+    <div class="mb-3">
+      <label for="note" class="form-label">Escrever Nota</label>
+      <textarea
+      class="form-control"
+      id="exampleFormControlTextarea1"
+      name="note"
+      rows="3"
+      [(ngModel)]="workout.note"></textarea>
+    </div>
+
+
+
+
+    <div class="col-12">
+      <button type="submit" (click)="sendWorkout()" class="btn btn-primary">Cadastrar Treino</button>
+      <button type="submit" class="btn  btn-danger">Cancelar</button>
+    </div>
+
+
+  </form>
+
+</div>

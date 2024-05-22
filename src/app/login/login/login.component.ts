@@ -1,4 +1,15 @@
+
+import { LoginService } from './login.service';
 import { Component, OnInit } from '@angular/core';
+
+
+interface User{
+
+  email: string;
+  password: string;
+  name?: string;
+
+}
 
 @Component({
   selector: 'app-login',
@@ -7,9 +18,31 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  loginUser : User = {email: "", password: "", name: ""}
+
+  constructor( private LoginService : LoginService) { }
 
   ngOnInit(): void {
+  }
+
+  submit(){
+    this.LoginService.login(this.loginUser.email, this.loginUser.password).subscribe(
+      resposta =>{
+        alert("deu certo")
+        console.log(resposta)
+
+        localStorage.setItem("nome", resposta.name)
+        localStorage.setItem("token", resposta.token)
+
+
+
+      }, error => {
+        console.log(error)
+      }
+    )
+
+
+
   }
 
 }
