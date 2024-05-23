@@ -31,10 +31,6 @@ export class LoginComponent implements OnInit {
         alert("deu certo")
         console.log(resposta)
 
-        localStorage.setItem("nome", resposta.name)
-        localStorage.setItem("token", resposta.token)
-
-
 
       }, error => {
         console.log(error)

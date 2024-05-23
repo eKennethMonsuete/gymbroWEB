@@ -11,10 +11,11 @@ import { UserCreateComponent } from './user/user-create/user-create.component';
 import { UserUpdateComponent } from './user/user-update/user-update.component';
 import { UserDeleteComponent } from './user/user-delete/user-delete.component';
 import { WorkoutComponent } from './workout/workout.component';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { LoginService } from './login/login/login.service';
 import { CreateWorkoutComponent } from './workout/create-workout/create-workout/create-workout.component';
+import { TokenInterceptorService } from './token/token-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,9 @@ import { CreateWorkoutComponent } from './workout/create-workout/create-workout/
     FormsModule
 
   ],
-  providers: [LoginService],
+  providers: [LoginService,
+    {provide:HTTP_INTERCEPTORS, useClass:TokenInterceptorService, multi:true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
