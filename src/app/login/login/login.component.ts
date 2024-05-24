@@ -1,4 +1,5 @@
 
+import { Router } from '@angular/router';
 import { LoginService } from './login.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -20,7 +21,9 @@ export class LoginComponent implements OnInit {
 
   loginUser : User = {email: "", password: "", name: ""}
 
-  constructor( private LoginService : LoginService) { }
+  constructor( private LoginService : LoginService,
+    private route : Router
+  ) { }
 
   ngOnInit(): void {
   }
@@ -30,6 +33,7 @@ export class LoginComponent implements OnInit {
       resposta =>{
         alert("deu certo")
         console.log(resposta)
+        this.route.navigate(["/home"])
 
 
       }, error => {

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Workout } from './Workout';
 import { CreateWorkoutService } from './create-workout.service';
 
+
 @Component({
   selector: 'app-create-workout',
   templateUrl: './create-workout.component.html',
@@ -25,5 +26,7 @@ export class CreateWorkoutComponent implements OnInit {
       }
     )
   }
+
+
 
 }
