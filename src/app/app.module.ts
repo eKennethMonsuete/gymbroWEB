@@ -10,7 +10,7 @@ import { UserComponent } from './user/user/user.component';
 import { UserCreateComponent } from './user/user-create/user-create.component';
 import { UserUpdateComponent } from './user/user-update/user-update.component';
 import { UserDeleteComponent } from './user/user-delete/user-delete.component';
-import { WorkoutComponent } from './workout/workout.component';
+
 import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { LoginService } from './login/login/login.service';
@@ -19,6 +19,9 @@ import { TokenInterceptorService } from './token/token-interceptor.service';
 import { HomeComponent } from './home/home/home.component';
 import { WorkoutListComponent } from './workout/workout-list/workout-list.component';
 import { CreateMeasuresComponent } from './measures/create-measures/create-measures.component';
+import { WorkoutListService } from './workout/workout-list/workout-list.service';
+import { DeleteMeasuresComponent } from './measures/delete-measures/delete-measures.component';
+import { UpdateMeasuresComponent } from './measures/update-measures/update-measures.component';
 
 @NgModule({
   declarations: [
@@ -30,11 +33,12 @@ import { CreateMeasuresComponent } from './measures/create-measures/create-measu
     UserCreateComponent,
     UserUpdateComponent,
     UserDeleteComponent,
-    WorkoutComponent,
     CreateWorkoutComponent,
     HomeComponent,
     WorkoutListComponent,
     CreateMeasuresComponent,
+    DeleteMeasuresComponent,
+    UpdateMeasuresComponent,
 
   ],
   imports: [
@@ -45,7 +49,8 @@ import { CreateMeasuresComponent } from './measures/create-measures/create-measu
 
   ],
   providers: [LoginService,
-    {provide:HTTP_INTERCEPTORS, useClass:TokenInterceptorService, multi:true}
+    {provide:HTTP_INTERCEPTORS, useClass:TokenInterceptorService, multi:true},
+    WorkoutListService
   ],
   bootstrap: [AppComponent]
 })

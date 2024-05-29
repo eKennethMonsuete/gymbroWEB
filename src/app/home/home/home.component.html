@@ -20,3 +20,36 @@
     </div>
   </div>
 </div>
+
+<div *ngIf="name">
+  <h2>{{ name }}</h2>
+</div>
+
+
+
+<div *ngIf="measures && measures.length">
+  <h3>Measures</h3>
+  <div class="row">
+    <div *ngFor="let measure of measures; let i = index" class="col-6 col-md-4 col-lg-3 col-xl-2 p-1">
+      <div class="card" style="width: 100%;">
+        <div class="card-body">
+          <h5 class="card-title">Medidas {{ i + 1 }}</h5>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Weight: {{ measure.weight }}</li>
+            <li class="list-group-item">Left Biceps: {{ measure.left_biceps }}</li>
+            <li class="list-group-item">Right Biceps: {{ measure.right_biceps }}</li>
+            <li class="list-group-item">Waist: {{ measure.waist }}</li>
+            <li class="list-group-item">Left Quadriceps: {{ measure.left_quadriceps }}</li>
+            <li class="list-group-item">Right Quadriceps: {{ measure.right_quadriceps }}</li>
+            <li class="list-group-item">Left Calf: {{ measure.left_calf }}</li>
+            <li class="list-group-item">Right Calf: {{ measure.right_calf }}</li>
+            <li class="list-group-item">id: {{ measure.id}}</li>
+            <button type="button"  class="btn btn-outline-info">Editar Medida</button>
+            <button type="button" [routerLink]="['/delete-measures', measure.id]" class="btn btn-outline-danger">Excluir Medida</button>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

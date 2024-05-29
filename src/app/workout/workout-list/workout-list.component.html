@@ -1,1 +1,33 @@
-<p>workout-list works!</p>
+<div  class="card">
+
+  <div class="card-body">
+    <h5 class="card-title">TREINOS LIVRES</h5>
+    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+
+  </div>
+</div>
+
+
+<div class="row row-cols-1 row-cols-md-2 g-4">
+
+
+  <div class="card border-secondary mb-3 card-spacing" *ngFor="let workouts of workoutList" style="max-width: 18rem;">
+    <div class="card-header">Header</div>
+    <div class="card-body text-secondary">
+      <h5 class="card-title">Secondary card title</h5>
+      <p class="card-text">{{workouts.workout1}}</p>
+      <p class="card-text">{{workouts.workout2}}</p>
+      <p class="card-text">{{workouts.note}}</p>
+
+    </div>
+  </div>
+
+
+
+
+</div>
+
+
+
+
+

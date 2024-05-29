@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { WorkoutComponent } from './workout.component';
+import { DeleteMeasuresComponent } from './delete-measures.component';
 
-describe('WorkoutComponent', () => {
-  let component: WorkoutComponent;
-  let fixture: ComponentFixture<WorkoutComponent>;
+describe('DeleteMeasuresComponent', () => {
+  let component: DeleteMeasuresComponent;
+  let fixture: ComponentFixture<DeleteMeasuresComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ WorkoutComponent ]
+      declarations: [ DeleteMeasuresComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(WorkoutComponent);
+    fixture = TestBed.createComponent(DeleteMeasuresComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

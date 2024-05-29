@@ -1,3 +1,5 @@
+import { WorkoutListService } from './workout-list.service';
+import { Workout } from './../create-workout/Workout';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WorkoutListComponent implements OnInit {
 
-  constructor() { }
+  workoutList : Workout[] = [];
+
+  constructor( private workoutListService : WorkoutListService) { }
 
   ngOnInit(): void {
+    this.workoutListService.WorkoutList().subscribe((workoutList) =>
+    {this.workoutList = workoutList})
   }
 
 }

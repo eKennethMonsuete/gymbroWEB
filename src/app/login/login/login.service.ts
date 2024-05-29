@@ -30,7 +30,9 @@ export class LoginService {
   }
 
   logout(){
-    this.tokenService.excluirToken();
+    //this.tokenService.excluirToken();
+    localStorage.clear();
+    sessionStorage.clear();
 
   }
 
