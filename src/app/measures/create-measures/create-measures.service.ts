@@ -16,7 +16,7 @@ export class CreateMeasuresService {
 
   createMeasure(measure : Measures):Observable<any>{
     const url = `${this.API}/measures/save/${measure.user_id}`
-    return this.http.post<any>(url, measure)
+    return this.http.post<any>(url, measure, { responseType: 'text' as 'json' })
 
   }
 }

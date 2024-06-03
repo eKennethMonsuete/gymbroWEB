@@ -47,6 +47,7 @@ export class CreateMeasuresComponent implements OnInit {
     this.createMeasuresService.createMeasure(this.measuresDTO).subscribe(
       resposta => {
         alert("medidas salvas")
+        this.router.navigate(['home']);
       }, error => {
         console.log("deu erro", error)
       }
@@ -57,12 +58,8 @@ export class CreateMeasuresComponent implements OnInit {
   }
 
   cancel(){
-    const id1 = localStorage.getItem("id")
-    if(id1){
-      this.measuresDTO.user_id = Number(id1);}
+    this.router.navigate(['home']);
 
-    console.log("tem um id aqui " + id1)
-    alert("aqui não faz nada")
   }
 
 }

@@ -31,6 +31,7 @@ export class UserCreateComponent implements OnInit {
       password : this.saveUserDTO.password
     }).subscribe(resposta =>
       {alert("user cadastrado com sucesso")
+      this.router.navigate(['']);
 
 
       },
@@ -39,6 +40,10 @@ export class UserCreateComponent implements OnInit {
       }
     )
   }
+    }
+
+    cancel(){
+      this.router.navigate(['']);
     }
 
 

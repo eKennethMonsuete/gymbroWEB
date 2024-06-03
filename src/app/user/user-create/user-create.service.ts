@@ -20,7 +20,7 @@ saveUser(User :
   whatsapp : string,
   password : string
   }): Observable<any>{
-    return this.http.post(`${this.API}/auth/register`, User);
+    return this.http.post(`${this.API}/auth/register`, User, { responseType: 'text' as 'json' });
   }
 
 }
