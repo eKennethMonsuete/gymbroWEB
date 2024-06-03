@@ -15,6 +15,7 @@
         <p class="card-text">Alguma coisa </p>
         <p class="card-text">Alguma coisa </p>
         <p class="card-text">Alguma coisa </p>
+        <button type="button" [routerLink]="['/updateuser', idUser]" [disabled]="idUser === null" class="btn btn-outline-danger">Editar meu user</button>
 
       </div>
     </div>
@@ -44,7 +45,7 @@
             <li class="list-group-item">Left Calf: {{ measure.left_calf }}</li>
             <li class="list-group-item">Right Calf: {{ measure.right_calf }}</li>
             <li class="list-group-item">id: {{ measure.id}}</li>
-            <button type="button"  class="btn btn-outline-info">Editar Medida</button>
+            <button type="button" [routerLink]="['/updatemeasure', measure.id]"  class="btn btn-outline-info">Editar Medida</button>
             <button type="button" [routerLink]="['/delete-measures', measure.id]" class="btn btn-outline-danger">Excluir Medida</button>
           </ul>
         </div>

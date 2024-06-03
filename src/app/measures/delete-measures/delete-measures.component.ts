@@ -42,6 +42,10 @@ export class DeleteMeasuresComponent implements OnInit {
     }
   }
 
+  cancel(){
+    this.router.navigate(['home']);
+  }
+
 
 
 }

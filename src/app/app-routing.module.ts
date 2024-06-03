@@ -10,6 +10,8 @@ import { HomeComponent } from './home/home/home.component';
 import { CreateMeasuresComponent } from './measures/create-measures/create-measures.component';
 import { WorkoutListComponent } from './workout/workout-list/workout-list.component';
 import { DeleteMeasuresComponent } from './measures/delete-measures/delete-measures.component';
+import { UpdateMeasuresComponent } from './measures/update-measures/update-measures.component';
+import { UserUpdateComponent } from './user/user-update/user-update.component';
 
 const routes: Routes = [
 
@@ -20,6 +22,8 @@ const routes: Routes = [
   {path:"creatework", component : CreateWorkoutComponent, canActivate: [authGuard]},
   {path: "workout", component: WorkoutListComponent},
   {path: "delete-measures/:id", component: DeleteMeasuresComponent},
+  {path: "updatemeasure/:id", component: UpdateMeasuresComponent},
+  {path: "updateuser/:id", component: UserUpdateComponent},
 
 ];
 

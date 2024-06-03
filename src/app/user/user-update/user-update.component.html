@@ -1,1 +1,51 @@
-<p>user-update works!</p>
+<div class=".container-fluid-lg marginRightLeft ">
+  <div class="row g-3"  >
+
+    <div class="col-6">
+      <label for="nome" class="form-label">Nome:</label>
+      <input type="text" class="form-control" id="nome" [(ngModel)]="user.name">
+    </div>
+
+    <div class="col-6">
+      <label for="sobrenome" class="form-label">Sobrenome:</label>
+      <input type="text" class="form-control" id="sobrenome" [(ngModel)]="user.surname" >
+    </div>
+
+    <div class="col-6">
+      <label for="email" class="form-label">Email:</label>
+      <input type="email" class="form-control" id="email" [(ngModel)]="user.email">
+    </div>
+
+    <div class="col-6">
+      <label for="whatsapp" class="form-label">Whatsapp:</label>
+      <input type="text" class="form-control" id="whatsapp" [(ngModel)]="user.whatsapp">
+    </div>
+
+    <div class="col-6">
+      <label for="senha" class="form-label">Senha:</label>
+      <input type="password" class="form-control" id="senha" [(ngModel)]="user.password">
+    </div>
+
+    <div class="col-6">
+      <label for="repetirSenha" class="form-label">Repetir Senha:</label>
+      <input type="password" class="form-control" id="repetirSenha" [(ngModel)]="user.secondPassword">
+    </div>
+
+
+
+
+
+
+    <div class="col-12">
+      <button  type="submit" (click)="updateUser()" class="btn btn-primary">Atualizar</button>
+      <button type="submit" (click)="cancel()" class="btn  btn-danger">Cancelar</button>
+    </div>
+
+  </div>
+
+</div>
+
+
+
+
+
