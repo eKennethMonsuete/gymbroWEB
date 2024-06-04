@@ -4,6 +4,7 @@ import { User } from './user';
 import { Router } from '@angular/router';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { onlyLettersValidator } from 'src/app/validators/lettersValidator';
+import { onlyNumbersValidator } from 'src/app/validators/numberValidator';
 
 
 @Component({
@@ -27,7 +28,7 @@ export class UserCreateComponent implements OnInit {
       name : new FormControl('', [Validators.required, onlyLettersValidator()]),
       surname : new FormControl('', [onlyLettersValidator()]),
       email : new FormControl('', [Validators.required, Validators.email]),
-      whatsapp : new FormControl('', Validators.required),
+      whatsapp : new FormControl('', [Validators.required, onlyNumbersValidator()]),
       password : new FormControl('', [Validators.required, Validators.minLength(6)]),
       secondPassword : new FormControl('', [Validators.required, Validators.minLength(6) ])
           })

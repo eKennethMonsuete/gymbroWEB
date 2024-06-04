@@ -32,7 +32,7 @@
     <label for="email" class="form-label">Email</label>
     <input type="email" class="form-control" id="email" formControlName="email" [ngClass]="{'is-invalid': formUserRegister.get('email')?.invalid && formUserRegister.get('email')?.touched, 'is-valid': formUserRegister.get('email')?.valid && formUserRegister.get('email')?.touched}">
     <div *ngIf="formUserRegister.get('email')?.invalid && formUserRegister.get('email')?.touched" class="invalid-feedback">
-      Digite um e-mail válido. Exemplo : 'exemploAexemplo.com'
+      Digite um e-mail válido. Exemplo : exemploAexemplo.com
     </div>
     <div *ngIf="formUserRegister.get('email')?.valid && formUserRegister.get('email')?.touched" class="valid-feedback">
       Tudo certo!
@@ -45,7 +45,7 @@
       <label for="whatsapp" class="form-label">Whatsapp</label>
       <input type="text" class="form-control" id="whatsapp" formControlName="whatsapp" [ngClass]="{'is-invalid': formUserRegister.get('whatsapp')?.invalid && formUserRegister.get('whatsapp')?.touched, 'is-valid': formUserRegister.get('whatsapp')?.valid && formUserRegister.get('whatsapp')?.touched}">
       <div *ngIf="formUserRegister.get('whatsapp')?.invalid && formUserRegister.get('whatsapp')?.touched" class="invalid-feedback">
-        Please provide a valid whatsapp number.
+        Digite apenas números.
       </div>
       <div *ngIf="formUserRegister.get('whatsapp')?.valid && formUserRegister.get('whatsapp')?.touched" class="valid-feedback">
         Looks good!

@@ -1,6 +1,6 @@
 <div class="card">
   <div class="card-body">
-    Seja Bem-Vindo. Fulano
+    Seja Bem-Vindo. {{  name }}
   </div>
 </div>
 
@@ -22,14 +22,12 @@
   </div>
 </div>
 
-<div *ngIf="name">
-  <h2>{{ name }}</h2>
-</div>
+
 
 
 
 <div *ngIf="measures && measures.length">
-  <h3>Measures</h3>
+  <h3>Minhas Medidas</h3>
   <div class="row">
     <div *ngFor="let measure of measures; let i = index" class="col-6 col-md-4 col-lg-3 col-xl-2 p-1">
       <div class="card" style="width: 100%;">
@@ -44,15 +42,19 @@
             <li class="list-group-item">Quadriceps Direito: {{ measure.right_quadriceps }}</li>
             <li class="list-group-item">Panturrilha Esquerda: {{ measure.left_calf }}</li>
             <li class="list-group-item">Panturrilha Direito: {{ measure.right_calf }}</li>
-            <li class="list-group-item">id: {{ measure.id}}</li>
-            <!-- home.component.html -->
-            <button type="button" [routerLink]="['/updatemeasure', measure.id]"  class="btn btn-outline-info">Editar Medida</button>
+
+            <div class="card-body d-flex flex-column align-items-start">
+              <button type="button" [routerLink]="['/updatemeasure', measure.id]"  class="btn btn-outline-info">Editar Medida</button>
+
+            <!-- home.component.html  -->
+            <app-delete-measures></app-delete-measures>
+
+              <button type="button" class="btn btn-outline-danger" (click)="openDeleteModal(measure.id)">Excluir</button>
+
+              </div>
 
             <!-- home.component.html -->
-<app-delete-measures></app-delete-measures>
-<ul>
-     <button type="button" class="btn btn-outline-danger" (click)="openDeleteModal(measure.id)">Excluir</button>
-</ul>
+
 
 
           </ul>
