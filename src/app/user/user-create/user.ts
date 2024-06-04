@@ -5,5 +5,4 @@ export interface User{
   whatsapp : string;
   password : string;
 
-  secondPassword : string;
 }
