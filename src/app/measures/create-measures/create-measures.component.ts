@@ -53,13 +53,9 @@ export class CreateMeasuresComponent implements OnInit {
       }
     )
 
-
-
   }
-
   cancel(){
     this.router.navigate(['home']);
-
   }
 
 }

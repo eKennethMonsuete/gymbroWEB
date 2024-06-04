@@ -31,12 +31,32 @@
       [(ngModel)]="workout.note"></textarea>
     </div>
 
+    <div class="mb-3">
+      <label for="note" class="form-label">Nome do Autor do treino</label>
+      <textarea
+      class="form-control"
+      id="exampleFormControlTextarea1"
+      name="note"
+      rows="3"
+      [(ngModel)]="workout.name"></textarea>
+    </div>
+    <div class="mb-3">
+      <label for="note" class="form-label">Social MEdia</label>
+      <textarea
+      class="form-control"
+      id="exampleFormControlTextarea1"
+      name="note"
+      rows="3"
+      [(ngModel)]="workout.socialMedia"></textarea>
+    </div>
+
+
 
 
 
     <div class="col-12">
       <button type="submit" (click)="sendWorkout()" class="btn btn-primary">Cadastrar Treino</button>
-      <button type="submit" class="btn  btn-danger">Cancelar</button>
+      <button type="submit" (click)="cancel()" class="btn  btn-danger">Cancelar</button>
     </div>
 
 

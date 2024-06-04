@@ -22,6 +22,8 @@ import { CreateMeasuresComponent } from './measures/create-measures/create-measu
 import { WorkoutListService } from './workout/workout-list/workout-list.service';
 import { DeleteMeasuresComponent } from './measures/delete-measures/delete-measures.component';
 import { UpdateMeasuresComponent } from './measures/update-measures/update-measures.component';
+import { WorkoutDeleteComponent } from './workout/workout-delete/workout-delete.component';
+import { WorkoutUpdateComponent } from './workout/workout-update/workout-update.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +41,8 @@ import { UpdateMeasuresComponent } from './measures/update-measures/update-measu
     CreateMeasuresComponent,
     DeleteMeasuresComponent,
     UpdateMeasuresComponent,
+    WorkoutDeleteComponent,
+    WorkoutUpdateComponent,
 
   ],
   imports: [
