@@ -1,3 +1,22 @@
+<!-- delete-measure.component.html -->
+<!-- delete-measure.component.html -->
+<div class="modal fade" id="deleteMeasureModal" tabindex="-1" aria-labelledby="deleteMeasureModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="deleteMeasureModalLabel">Confirmação de Exclusão</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Você tem certeza que deseja excluir esta medida?
+      </div>
+      <div class="modal-footer">
+        <button type="button" (click)="cancel()" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" (click)="delete()" class="btn btn-primary">Excluir</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 
@@ -7,8 +26,9 @@
 
 
 
-        <button type="button" (click)="cancel()" class="btn btn-secondary" data-bs-dismiss="modal">VOLTAR</button>
-        <button type="button" (click)="delete()" class="btn btn-primary">DELETAR</button>
+
+
+
 
 
 

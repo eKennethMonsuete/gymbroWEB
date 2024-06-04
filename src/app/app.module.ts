@@ -12,7 +12,7 @@ import { UserUpdateComponent } from './user/user-update/user-update.component';
 import { UserDeleteComponent } from './user/user-delete/user-delete.component';
 
 import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginService } from './login/login/login.service';
 import { CreateWorkoutComponent } from './workout/create-workout/create-workout.component';
 import { TokenInterceptorService } from './token/token-interceptor.service';
@@ -45,7 +45,8 @@ import { UpdateMeasuresComponent } from './measures/update-measures/update-measu
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
 
   ],
   providers: [LoginService,

@@ -1,34 +1,70 @@
 <div class=".container-fluid-lg marginRightLeft ">
-  <div class="row g-3" (ngSubmit)="registerUser()" >
+  <form class="row g-3 "   [formGroup]="formUserRegister">
 
-    <div class="col-6">
-      <label for="nome" class="form-label">Nome:</label>
-      <input type="text" class="form-control" id="nome" [(ngModel)]="saveUserDTO.name">
+    <!-- Campo Name -->
+    <div class="col-md-6">
+      <label for="name" class="form-label">Name</label>
+      <input type="text" class="form-control" id="name" formControlName="name" [ngClass]="{'is-invalid': formUserRegister.get('name')?.invalid && formUserRegister.get('name')?.touched, 'is-valid': formUserRegister.get('name')?.valid && formUserRegister.get('name')?.touched}">
+      <div *ngIf="formUserRegister.get('name')?.invalid && formUserRegister.get('name')?.touched" class="invalid-feedback">
+        Please provide a valid name.
+      </div>
+      <div *ngIf="formUserRegister.get('name')?.valid && formUserRegister.get('name')?.touched" class="valid-feedback">
+        Looks good!
+      </div>
     </div>
 
-    <div class="col-6">
-      <label for="sobrenome" class="form-label">Sobrenome:</label>
-      <input type="text" class="form-control" id="sobrenome" [(ngModel)]="saveUserDTO.surname" >
+    <!-- Campo Surname -->
+    <div class="col-md-6">
+      <label for="surname" class="form-label">Surname</label>
+      <input type="text" class="form-control" id="surname" formControlName="surname">
     </div>
 
-    <div class="col-6">
-      <label for="email" class="form-label">Email:</label>
-      <input type="email" class="form-control" id="email" [(ngModel)]="saveUserDTO.email">
+    <!-- Campo Email -->
+    <div class="col-md-6">
+      <label for="email" class="form-label">Email</label>
+      <input type="email" class="form-control" id="email" formControlName="email" [ngClass]="{'is-invalid': formUserRegister.get('email')?.invalid && formUserRegister.get('email')?.touched, 'is-valid': formUserRegister.get('email')?.valid && formUserRegister.get('email')?.touched}">
+      <div *ngIf="formUserRegister.get('email')?.invalid && formUserRegister.get('email')?.touched" class="invalid-feedback">
+        Please provide a valid email.
+      </div>
+      <div *ngIf="formUserRegister.get('email')?.valid && formUserRegister.get('email')?.touched" class="valid-feedback">
+        Looks good!
+      </div>
     </div>
 
-    <div class="col-6">
-      <label for="whatsapp" class="form-label">Whatsapp:</label>
-      <input type="text" class="form-control" id="whatsapp" [(ngModel)]="saveUserDTO.whatsapp">
+    <!-- Campo Whatsapp -->
+    <div class="col-md-6">
+      <label for="whatsapp" class="form-label">Whatsapp</label>
+      <input type="text" class="form-control" id="whatsapp" formControlName="whatsapp" [ngClass]="{'is-invalid': formUserRegister.get('whatsapp')?.invalid && formUserRegister.get('whatsapp')?.touched, 'is-valid': formUserRegister.get('whatsapp')?.valid && formUserRegister.get('whatsapp')?.touched}">
+      <div *ngIf="formUserRegister.get('whatsapp')?.invalid && formUserRegister.get('whatsapp')?.touched" class="invalid-feedback">
+        Please provide a valid whatsapp number.
+      </div>
+      <div *ngIf="formUserRegister.get('whatsapp')?.valid && formUserRegister.get('whatsapp')?.touched" class="valid-feedback">
+        Looks good!
+      </div>
     </div>
 
-    <div class="col-6">
-      <label for="senha" class="form-label">Senha:</label>
-      <input type="password" class="form-control" id="senha" [(ngModel)]="saveUserDTO.password">
+    <!-- Campo Password -->
+    <div class="col-md-6">
+      <label for="password" class="form-label">Password</label>
+      <input type="password" class="form-control" id="password" formControlName="password" [ngClass]="{'is-invalid': formUserRegister.get('password')?.invalid && formUserRegister.get('password')?.touched, 'is-valid': formUserRegister.get('password')?.valid && formUserRegister.get('password')?.touched}">
+      <div *ngIf="formUserRegister.get('password')?.invalid && formUserRegister.get('password')?.touched" class="invalid-feedback">
+        Please provide a password.
+      </div>
+      <div *ngIf="formUserRegister.get('password')?.valid && formUserRegister.get('password')?.touched" class="valid-feedback">
+        Looks good!
+      </div>
     </div>
 
-    <div class="col-6">
-      <label for="repetirSenha" class="form-label">Repetir Senha:</label>
-      <input type="password" class="form-control" id="repetirSenha" [(ngModel)]="saveUserDTO.secondPassword">
+    <!-- Campo Confirm Password -->
+    <div class="col-md-6">
+      <label for="secondPassword" class="form-label">Confirm Password</label>
+      <input type="password" class="form-control" id="secondPassword" formControlName="secondPassword" [ngClass]="{'is-invalid': formUserRegister.get('secondPassword')?.invalid && formUserRegister.get('secondPassword')?.touched, 'is-valid': formUserRegister.get('secondPassword')?.valid && formUserRegister.get('secondPassword')?.touched}">
+      <div *ngIf="formUserRegister.get('secondPassword')?.invalid && formUserRegister.get('secondPassword')?.touched" class="invalid-feedback">
+        Please confirm your password.
+      </div>
+      <div *ngIf="formUserRegister.get('secondPassword')?.valid && formUserRegister.get('secondPassword')?.touched" class="valid-feedback">
+        Looks good!
+      </div>
     </div>
 
 
@@ -39,10 +75,27 @@
       <button type="submit" (click)="cancel()" class="btn  btn-danger">Cancelar</button>
     </div>
 
-  </div>
+  </form>
 
 </div>
 
+
+<!--!
+ <div class="col-6  " >
+           <label for="name" class="form-label ">Nome:</label>
+           <input
+           type="text"
+           class="form-control"
+           id="name"
+           formControlName="name"
+           [(ngModel)]="saveUserDTO.name" >
+             >
+             <div *ngIf="formUserRegister.get('name')?.errors && formUserRegister.get('name')?.touched">
+              <div>
+                Tá errado
+              </div>
+            </div>
+        </div> -->
 
 
 

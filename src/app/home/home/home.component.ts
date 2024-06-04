@@ -1,3 +1,4 @@
+import { DeleteMeasuresService } from './../../measures/delete-measures/delete-measures.service';
 
 import { ActivatedRoute } from '@angular/router';
 import { ListMeasuresService } from './../../measures/list-measures/list-measures.service';
@@ -23,7 +24,8 @@ export class HomeComponent implements OnInit {
 
   constructor(private listMeasuresService : ListMeasuresService,
     private route: ActivatedRoute,
-    private userService : UserUpdateService
+    private userService : UserUpdateService,
+    private deleteMeasuresService : DeleteMeasuresService
 
 
   ) { }
@@ -33,6 +35,7 @@ export class HomeComponent implements OnInit {
     this.getUserId();
 
     console.log(this.idUser);
+    console.log(this.measures);
 
 
 
@@ -68,6 +71,11 @@ export class HomeComponent implements OnInit {
         this.user = user;
       });
     }
+  }
+
+  openDeleteModal(measureId : number): void {
+    this.deleteMeasuresService.setMeasureId(measureId);
+    this.deleteMeasuresService.triggerModal();
   }
 
 
