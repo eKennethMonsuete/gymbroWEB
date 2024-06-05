@@ -12,6 +12,8 @@ import { WorkoutListComponent } from './workout/workout-list/workout-list.compon
 import { DeleteMeasuresComponent } from './measures/delete-measures/delete-measures.component';
 import { UpdateMeasuresComponent } from './measures/update-measures/update-measures.component';
 import { UserUpdateComponent } from './user/user-update/user-update.component';
+import { WorkoutUpdateComponent } from './workout/workout-update/workout-update.component';
+import { WorkoutDeleteComponent } from './workout/workout-delete/workout-delete.component';
 
 const routes: Routes = [
 
@@ -24,6 +26,8 @@ const routes: Routes = [
   {path: "delete-measures/:id", component: DeleteMeasuresComponent},
   {path: "updatemeasure/:id", component: UpdateMeasuresComponent},
   {path: "updateuser/:id", component: UserUpdateComponent},
+  {path: "updateworkout/:id", component: WorkoutUpdateComponent},
+  {path: "deleteworkout/:id", component: WorkoutDeleteComponent}
 
 ];
 

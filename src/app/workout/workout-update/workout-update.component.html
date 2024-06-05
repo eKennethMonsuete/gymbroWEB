@@ -1,1 +1,63 @@
-<p>workout-update works!</p>
+<div class=".container-fluid-lg marginRightLeft ">
+  <form class="row g-3">
+
+    <div class="mb-3">
+      <label for="workout1" class="form-label">Escrever Treino1</label>
+      <textarea
+      class="form-control"
+      id="exampleFormControlTextarea1"
+      name="workout1"
+      rows="3"
+      [(ngModel)]="workout.workout1"></textarea>
+    </div>
+
+    <div class="mb-3">
+      <label for="workout2" class="form-label">Escrever Treino2</label>
+      <textarea
+      class="form-control"
+      id="exampleFormControlTextarea1"
+      name="workout2"
+      rows="3"
+      [(ngModel)]="workout.workout2"></textarea>
+    </div>
+
+    <div class="mb-3">
+      <label for="note" class="form-label">Escrever Nota</label>
+      <textarea
+      class="form-control"
+      id="exampleFormControlTextarea1"
+      name="note"
+      rows="3"
+      [(ngModel)]="workout.note"></textarea>
+    </div>
+
+    <div class="mb-3">
+      <label for="note" class="form-label">Nome do Autor do treino</label>
+      <textarea
+      class="form-control"
+      id="exampleFormControlTextarea1"
+      name="note"
+      rows="3"
+      [(ngModel)]="workout.name"></textarea>
+    </div>
+    <div class="mb-3">
+      <label for="note" class="form-label">Social MEdia</label>
+      <textarea
+      class="form-control"
+      id="exampleFormControlTextarea1"
+      name="note"
+      rows="3"
+      [(ngModel)]="workout.socialMedia"></textarea>
+    </div>
+
+
+    <div class="col-12">
+      <button type="submit" (click)="updateWorkout()" class="btn btn-primary">Atualizar Treino</button>
+      <button type="submit" (click)="cancel()" class="btn  btn-danger">Voltar</button>
+    </div>
+
+
+  </form>
+
+</div>
+

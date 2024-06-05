@@ -21,6 +21,10 @@
       <p class="card-text">Autor: {{workouts.name}}</p>
       <p class="card-text">Data:{{workouts.date}}</p>
       <p class="card-text">Arroba:{{workouts.socialMedia}}</p>
+      <p class="card-text">id:{{workouts.id}}</p>
+
+      <button routerLink="/updateworkout/{{workouts.id}}">ATUALIZAR</button>
+      <button routerLink="/deleteworkout/{{workouts.id}}">deleteaas</button>
 
     </div>
   </div>
