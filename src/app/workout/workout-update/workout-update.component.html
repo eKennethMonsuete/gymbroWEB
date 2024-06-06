@@ -1,63 +1,110 @@
-<div class=".container-fluid-lg marginRightLeft ">
-  <form class="row g-3">
+<div class="container-fluid-lg marginRightLeft largura">
+  <form class="row g-3" [formGroup]="formWorkoutRegister" >
 
-    <div class="mb-3">
+    <div>
+      <!-- Campo Name -->
+    <div class="col-md-6 mb-3">
+      <label for="name" class="form-label">Nome do Autor do Treino</label>
+      <input
+        type="text"
+        class="form-control"
+        id="name"
+        formControlName="name"
+        [ngClass]="{'is-invalid': formWorkoutRegister.get('name')?.invalid && formWorkoutRegister.get('name')?.touched, 'is-valid': formWorkoutRegister.get('name')?.valid && formWorkoutRegister.get('name')?.touched}">
+      <div *ngIf="formWorkoutRegister.get('name')?.invalid && formWorkoutRegister.get('name')?.touched" class="invalid-feedback">
+        Campo obrigatório.
+      </div>
+      <div *ngIf="formWorkoutRegister.get('name')?.valid && formWorkoutRegister.get('name')?.touched" class="valid-feedback">
+        Tudo correto!
+      </div>
+    </div>
+
+    <!-- Campo Social Media -->
+    <div class="col-md-6 mb-3">
+      <label for="socialMedia" class="form-label">Social Media</label>
+      <input
+        type="text"
+        class="form-control"
+        id="socialMedia"
+        formControlName="socialMedia"
+        [ngClass]="{'is-invalid': formWorkoutRegister.get('socialMedia')?.invalid && formWorkoutRegister.get('socialMedia')?.touched, 'is-valid': formWorkoutRegister.get('socialMedia')?.valid && formWorkoutRegister.get('socialMedia')?.touched}">
+      <div *ngIf="formWorkoutRegister.get('socialMedia')?.invalid && formWorkoutRegister.get('socialMedia')?.touched" class="invalid-feedback">
+        Campo obrigatório.
+      </div>
+      <div *ngIf="formWorkoutRegister.get('socialMedia')?.valid && formWorkoutRegister.get('socialMedia')?.touched" class="valid-feedback">
+        Tudo correto!
+      </div>
+    </div>
+  </div>
+
+    <!-- Campo Workout1 -->
+    <div class="col-md-6 mb-3 position-relative">
       <label for="workout1" class="form-label">Escrever Treino1</label>
       <textarea
-      class="form-control"
-      id="exampleFormControlTextarea1"
-      name="workout1"
-      rows="3"
-      [(ngModel)]="workout.workout1"></textarea>
+        class="form-control"
+        id="workout1"
+        formControlName="workout1"
+        (input)="onTextChanged($event)"
+        [ngClass]="{'is-invalid': formWorkoutRegister.get('workout1')?.invalid && formWorkoutRegister.get('workout1')?.touched, 'is-valid': formWorkoutRegister.get('workout1')?.valid && formWorkoutRegister.get('workout1')?.touched}"
+        maxlength="255"></textarea>
+      <div class="char-counter">{{ charCount }}/255</div>
+      <div *ngIf="formWorkoutRegister.get('workout1')?.invalid && formWorkoutRegister.get('workout1')?.touched" class="invalid-feedback">
+        Limite de 255 caracteres.
+      </div>
+      <div *ngIf="formWorkoutRegister.get('workout1')?.valid && formWorkoutRegister.get('workout1')?.touched" class="valid-feedback">
+        Tudo correto!
+      </div>
     </div>
 
-    <div class="mb-3">
+    <!-- Campo Workout2 -->
+    <div class="col-md-6 mb-3 position-relative">
       <label for="workout2" class="form-label">Escrever Treino2</label>
       <textarea
-      class="form-control"
-      id="exampleFormControlTextarea1"
-      name="workout2"
-      rows="3"
-      [(ngModel)]="workout.workout2"></textarea>
+        class="form-control"
+        id="workout2"
+        formControlName="workout2"
+        (input)="onTextChanged2($event)"
+        [ngClass]="{'is-invalid': formWorkoutRegister.get('workout2')?.invalid
+        && formWorkoutRegister.get('workout2')?.touched,
+         'is-valid': formWorkoutRegister.get('workout2')?.valid &&
+          formWorkoutRegister.get('workout2')?.touched}"
+        maxlength="255"></textarea>
+
+      <div class="char-counter">{{ charCount2 }}/255</div>
+      <div *ngIf="formWorkoutRegister.get('workout2')?.invalid && formWorkoutRegister.get('workout2')?.touched" class="invalid-feedback">
+        Limite de 255 caracteres.
+      </div>
+      <div *ngIf="formWorkoutRegister.get('workout2')?.valid && formWorkoutRegister.get('workout2')?.touched" class="valid-feedback">
+        Tudo correto!
+      </div>
     </div>
 
-    <div class="mb-3">
-      <label for="note" class="form-label">Escrever Nota</label>
+    <!-- Campo Note -->
+    <div class="col-md-6 mb-3 position-relative">
+      <label for="note" class="form-label">Descrição</label>
       <textarea
-      class="form-control"
-      id="exampleFormControlTextarea1"
-      name="note"
-      rows="3"
-      [(ngModel)]="workout.note"></textarea>
-    </div>
-
-    <div class="mb-3">
-      <label for="note" class="form-label">Nome do Autor do treino</label>
-      <textarea
-      class="form-control"
-      id="exampleFormControlTextarea1"
-      name="note"
-      rows="3"
-      [(ngModel)]="workout.name"></textarea>
-    </div>
-    <div class="mb-3">
-      <label for="note" class="form-label">Social MEdia</label>
-      <textarea
-      class="form-control"
-      id="exampleFormControlTextarea1"
-      name="note"
-      rows="3"
-      [(ngModel)]="workout.socialMedia"></textarea>
+        class="form-control"
+        id="note"
+        formControlName="note"
+        (input)="onTextChanged3($event)"
+        [ngClass]="{'is-invalid': formWorkoutRegister.get('note')?.invalid && formWorkoutRegister.get('note')?.touched, 'is-valid': formWorkoutRegister.get('note')?.valid && formWorkoutRegister.get('note')?.touched}"
+        maxlength="255"></textarea>
+      <div class="char-counter">{{ charCount3 }}/255</div>
+      <div *ngIf="formWorkoutRegister.get('note')?.invalid && formWorkoutRegister.get('note')?.touched" class="invalid-feedback">
+        Limite de 255 caracteres.
+      </div>
+      <div *ngIf="formWorkoutRegister.get('note')?.valid && formWorkoutRegister.get('note')?.touched" class="valid-feedback">
+        Tudo correto!
+      </div>
     </div>
 
 
+
+    <!-- Botões -->
     <div class="col-12">
-      <button type="submit" (click)="updateWorkout()" class="btn btn-primary">Atualizar Treino</button>
-      <button type="submit" (click)="cancel()" class="btn  btn-danger">Voltar</button>
+      <button type="submit" (click)="updateWorkout()" class="btn btn-primary">Cadastrar Treino</button>
+      <button type="button" (click)="cancel()" class="btn btn-danger">Cancelar</button>
     </div>
-
 
   </form>
-
 </div>
-
