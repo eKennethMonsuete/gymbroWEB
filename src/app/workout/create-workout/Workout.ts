@@ -4,6 +4,5 @@ export interface Workout{
   workout2 : string;
   note : string;
   name : string;
-
   socialMedia : string;
 }

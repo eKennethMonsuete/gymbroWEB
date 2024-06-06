@@ -18,16 +18,16 @@ import { WorkoutDeleteComponent } from './workout/workout-delete/workout-delete.
 const routes: Routes = [
 
   {path:"", component : LoginComponent},
-  {path:"home", component : HomeComponent},
+  {path:"home", component : HomeComponent, canActivate: [authGuard]},
   {path:"createmeasures", component : CreateMeasuresComponent, canActivate: [authGuard]},
   {path:"createuser", component : UserCreateComponent},
-  {path:"creatework", component : CreateWorkoutComponent, canActivate: [authGuard]},
+  {path:"creatework", component : CreateWorkoutComponent},
   {path: "workout", component: WorkoutListComponent},
-  {path: "delete-measures/:id", component: DeleteMeasuresComponent},
-  {path: "updatemeasure/:id", component: UpdateMeasuresComponent},
-  {path: "updateuser/:id", component: UserUpdateComponent},
-  {path: "updateworkout/:id", component: WorkoutUpdateComponent},
-  {path: "deleteworkout/:id", component: WorkoutDeleteComponent}
+  {path: "delete-measures/:id", component: DeleteMeasuresComponent, canActivate: [authGuard]},
+  {path: "updatemeasure/:id", component: UpdateMeasuresComponent, canActivate: [authGuard]},
+  {path: "updateuser/:id", component: UserUpdateComponent, canActivate: [authGuard]},
+  {path: "updateworkout/:id", component: WorkoutUpdateComponent, canActivate: [authGuard]},
+  {path: "deleteworkout/:id", component: WorkoutDeleteComponent, canActivate: [authGuard]}
 
 ];
 

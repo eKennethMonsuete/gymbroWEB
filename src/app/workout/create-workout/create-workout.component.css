@@ -1,0 +1,17 @@
+/* app.component.css */
+.position-relative {
+  position: relative;
+}
+
+.char-counter {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  font-size: 0.8em;
+  color: #888;
+}
+
+.largura{
+  width: 80%;
+  margin: 10px;
+}

@@ -23,10 +23,15 @@
       <p class="card-text">Arroba:{{workouts.socialMedia}}</p>
       <p class="card-text">id:{{workouts.id}}</p>
 
-      <button routerLink="/updateworkout/{{workouts.id}}">ATUALIZAR</button>
-      <button routerLink="/deleteworkout/{{workouts.id}}">deleteaas</button>
+
+
+
 
     </div>
+          <div class="card-footer">
+              <button routerLink="/updateworkout/{{workouts.id}}" class="btn btn-outline-info">ATUALIZAR</button>
+              <button routerLink="/deleteworkout/{{workouts.id}}" class="btn btn-outline-danger">DELETAR</button>
+          </div>
   </div>
 
 

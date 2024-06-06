@@ -13,14 +13,14 @@ export class UpdateMeasuresService {
 
   constructor( private http : HttpClient) { }
 
-  updateMeasure(measureId : number, measures : Measures): Observable<Measures>{
-    const url = `${this.API}/measures/${measureId}`;
+  updateMeasure(id : number, measures : Measures): Observable<Measures>{
+    const url = `${this.API}/measures/${id}`;
     return this.http.put<any>(url, measures, { responseType: 'text' as 'json' })
   }
 
 
   findMeasureById(id: number){
-    const url = `${this.API}/user/${id}`
+    const url = `${this.API}/measures/${id}`
     return this.http.get<any>(url)
 
   }

@@ -11,6 +11,8 @@ declare var bootstrap: any;
 })
 export class WorkoutDeleteComponent implements OnInit {
 
+  private modal: any;
+
   workout : Workout = {
     id : 0,
     workout1 : "",
@@ -25,10 +27,13 @@ export class WorkoutDeleteComponent implements OnInit {
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
-        this.workoutDeleteService.findWorkoutById(parseInt(id!)).subscribe((workout) =>{
-              this.workout = workout;
-  })
-  this.openModal();
+    if (id) {
+      this.workoutDeleteService.findWorkoutById(parseInt(id)).subscribe((workout) => {
+        this.workout = workout;
+        this.openModal();  // Abre o modal assim que o workout é carregado
+      });
+    }
+
   }
 
   openModal(): void {
@@ -40,8 +45,11 @@ export class WorkoutDeleteComponent implements OnInit {
   deleteWorkout(){
     if(this.workout.id){
       this.workoutDeleteService.deleteWorkout(this.workout.id).subscribe(() =>
-      {alert("treino excluido")
+      {
+        alert("deletou")
+        this.modal.hide();
         this.router.navigate(["workout"])
+
       }, error =>{
         console.log(error)
       })
@@ -49,6 +57,7 @@ export class WorkoutDeleteComponent implements OnInit {
   }
 
   cancel(){
+    this.modal.hide();
     this.router.navigate(['workout']);
   }
 
