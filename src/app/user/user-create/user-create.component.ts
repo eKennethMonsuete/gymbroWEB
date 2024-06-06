@@ -17,8 +17,6 @@ export class UserCreateComponent implements OnInit {
   formUserRegister! : FormGroup;
 
 
-  //User : User[]=[];
-  //saveUserDTO : User = {name :"", surname:"" , email:"", whatsapp:"",  password:"", secondPassword:""}
 
   constructor(private UserCreateService : UserCreateService,
               private router : Router, private formBuilder : FormBuilder

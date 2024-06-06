@@ -5,6 +5,7 @@ export interface Workout{
   workout2 : string;
   note : string;
   name : string;
+  workoutName : string;
   date : string;
   socialMedia : string;
 }

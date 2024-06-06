@@ -31,6 +31,7 @@ export class CreateWorkoutComponent implements OnInit {
       workout2 : new FormControl('', [Validators.maxLength(255)]),
       note : new FormControl('', [Validators.maxLength(255)]),
       name : new FormControl('', [Validators.required]),
+      workoutName : new FormControl('', [Validators.required]),
       socialMedia : new FormControl('', [Validators.required])
     })
 
@@ -49,6 +50,7 @@ export class CreateWorkoutComponent implements OnInit {
         workout2: formValues.workout2,
         note : formValues.note,
         name : formValues.name,
+        workoutName : formValues.workoutName,
         socialMedia : formValues.socialMedia
 
       }

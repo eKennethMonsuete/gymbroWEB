@@ -19,6 +19,22 @@
       </div>
     </div>
 
+    <div class="col-md-6 mb-3">
+      <label for="workoutName" class="form-label">Nome do Treino</label>
+      <input
+        type="text"
+        class="form-control"
+        id="workoutName"
+        formControlName="workoutName"
+        [ngClass]="{'is-invalid': formWorkoutRegister.get('workoutName')?.invalid && formWorkoutRegister.get('workoutName')?.touched, 'is-valid': formWorkoutRegister.get('workoutName')?.valid && formWorkoutRegister.get('workoutName')?.touched}">
+      <div *ngIf="formWorkoutRegister.get('workoutName')?.invalid && formWorkoutRegister.get('workoutName')?.touched" class="invalid-feedback">
+        Campo obrigatório.
+      </div>
+      <div *ngIf="formWorkoutRegister.get('workoutName')?.valid && formWorkoutRegister.get('workoutName')?.touched" class="valid-feedback">
+        Tudo correto!
+      </div>
+    </div>
+
     <!-- Campo Social Media -->
     <div class="col-md-6 mb-3">
       <label for="socialMedia" class="form-label">Social Media</label>
