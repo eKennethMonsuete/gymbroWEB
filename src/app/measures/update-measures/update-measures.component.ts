@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { ActivatedRoute, Router } from '@angular/router';
 import { Measures } from './measures';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-update-measures',
@@ -12,64 +13,65 @@ import { Measures } from './measures';
 export class UpdateMeasuresComponent implements OnInit {
 
 
-  //measureId : number = 0;
-  measure : Measures = {
-    id : 0,
-    weight : 0,
-    left_biceps : 0,
-    right_biceps : 0,
-    waist : 0,
-    left_quadriceps : 0,
-    right_quadriceps : 0,
-    left_calf : 0,
-    right_calf : 0,
-    user_id : 0,
-
-  }
+  formMeasuresUpdate!: FormGroup;
+  measureId: number = 0;
 
   constructor(
-    private updateMeasuresService : UpdateMeasuresService,
-    private  route: ActivatedRoute,
-    private router : Router
-  ) { }
+    private updateMeasuresService: UpdateMeasuresService,
+    private route: ActivatedRoute,
+    private router: Router,
+    private formBuilder: FormBuilder
+  ) {
+    this.formMeasuresUpdate = this.formBuilder.group({
+      weight: ['', [Validators.required, Validators.min(0)]],
+      left_biceps: ['', [Validators.required, Validators.min(0)]],
+      right_biceps: ['', [Validators.required, Validators.min(0)]],
+      waist: ['', [Validators.required, Validators.min(0)]],
+      left_quadriceps: ['', [Validators.required, Validators.min(0)]],
+      right_quadriceps: ['', [Validators.required, Validators.min(0)]],
+      left_calf: ['', [Validators.required, Validators.min(0)]],
+      right_calf: ['', [Validators.required, Validators.min(0)]],
+      date: ['']
+    });
+  }
 
   ngOnInit(): void {
-    const id = this.route.snapshot.paramMap.get('id');
-    this.measure.id = id !== null ? +id : 0;
-    console.log(this.measure.id,"update component", this.measure)
 
-    if (id) {
-      this.updateMeasuresService.findMeasureById(parseInt(id)).subscribe((measure) => {
-        // Preserve the id in case it is not returned by the API response
+    const id = this.route.snapshot.paramMap.get('id');
+    this.measureId = id !== null ? +id : 0;
+
+    if (this.measureId) {
+      this.updateMeasuresService.findMeasureById(this.measureId).subscribe((measure: Measures) => {
         if (measure) {
-          measure.id = this.measure.id;
-          this.measure = measure;
+          this.formMeasuresUpdate.patchValue(measure);
         }
       });
-
-
+    }
+    console.log(id)
   }
-}
 
-updateMeasure() {
-  if (this.measure.id) {
-    this.updateMeasuresService.updateMeasure(this.measure.id, this.measure).subscribe(
-      resposta => {
-        alert('deu certo');
-        console.log(this.measure);
-        console.log(resposta);
-        this.router.navigate(['home']);
-      }, error => {
-        console.log(error, this.measure.id);
-      }
-    );
-  } else {
-    console.error('Measure ID is missing');
+  updateMeasure() {
+    if (this.formMeasuresUpdate.valid) {
+      const updatedMeasure: Measures = {
+        ...this.formMeasuresUpdate.value,
+        id: this.measureId
+      };
+
+      this.updateMeasuresService.updateMeasure(this.measureId, updatedMeasure).subscribe(
+        response => {
+          alert('Medidas atualizadas com sucesso');
+          this.router.navigate(['home']);
+        },
+        error => {
+          console.error('Erro ao atualizar medidas', error);
+        }
+      );
+    } else {
+      console.error('Formulário inválido');
+    }
   }
-}
 
-  cancel(){
+  cancel() {
     this.router.navigate(['home']);
   }
-
 }

@@ -42,6 +42,8 @@
             <li class="list-group-item">Quadriceps Direito: {{ measure.right_quadriceps }}</li>
             <li class="list-group-item">Panturrilha Esquerda: {{ measure.left_calf }}</li>
             <li class="list-group-item">Panturrilha Direito: {{ measure.right_calf }}</li>
+            <li class="list-group-item">Data Anterior: {{ measure.date }}</li>
+            <li class="list-group-item">Data de Registro: {{ measure.registrationDate }}</li>
 
             <div class="card-body d-flex flex-column align-items-start">
               <button type="button" [routerLink]="['/updatemeasure', measure.id]"  class="btn btn-outline-info">Editar Medida</button>

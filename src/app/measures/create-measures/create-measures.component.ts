@@ -2,6 +2,7 @@ import { CreateMeasuresService } from './create-measures.service';
 import { Component, OnInit } from '@angular/core';
 import { Measures } from './measures';
 import { ActivatedRoute, Router } from '@angular/router';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-create-measures',
@@ -10,32 +11,36 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class CreateMeasuresComponent implements OnInit {
 
-  measures : Measures[] = [];
+  formMeasuresRegister!: FormGroup;
 
-  measuresDTO : Measures = {weight : 0,
-    left_biceps : 0 ,
-    right_biceps : 0,
-    waist : 0 ,
-    left_quadriceps : 0 ,
-    right_quadriceps : 0 ,
-    left_calf : 0 ,
-    right_calf : 0,
-    user_id: 0}
-
-
-
-  constructor(private createMeasuresService : CreateMeasuresService,
-              private router: Router,
-              private route: ActivatedRoute
-  ) { }
+  constructor(
+    private createMeasuresService: CreateMeasuresService,
+    private router: Router,
+    private route: ActivatedRoute,
+    private formBuilder: FormBuilder
+  ) {
+    this.formMeasuresRegister = this.formBuilder.group({
+      weight: new FormControl('', [Validators.required, Validators.min(0)]),
+      left_biceps: new FormControl('', [Validators.required, Validators.min(0)]),
+      right_biceps: new FormControl('', [Validators.required, Validators.min(0)]),
+      waist: new FormControl('', [Validators.required, Validators.min(0)]),
+      left_quadriceps: new FormControl('', [Validators.required, Validators.min(0)]),
+      right_quadriceps: new FormControl('', [Validators.required, Validators.min(0)]),
+      left_calf: new FormControl('', [Validators.required, Validators.min(0)]),
+      right_calf: new FormControl('', [Validators.required, Validators.min(0)]),
+      date: new FormControl('', ),
+      user_id: new FormControl('')
+    });
+  }
 
   ngOnInit(): void {
-   const id = localStorage.getItem("id")
-    if(id){
-      this.measuresDTO.user_id = Number(id);
-      if (!isNaN(this.measuresDTO.user_id)) {
-        console.log('User ID recuperado do localStorage e convertido para número:');
-      } else if(isNaN(this.measuresDTO.user_id)) {
+    const id = localStorage.getItem("id");
+    if (id) {
+      const userId = Number(id);
+      if (!isNaN(userId)) {
+        this.formMeasuresRegister.patchValue({ user_id: userId });
+        console.log('User ID recuperado do localStorage e convertido para número:', userId);
+      } else {
         console.log('Falha na conversão do User ID para número.');
       }
     } else {
@@ -43,19 +48,24 @@ export class CreateMeasuresComponent implements OnInit {
     }
   }
 
-  saveMeasures(){
-    this.createMeasuresService.createMeasure(this.measuresDTO).subscribe(
-      resposta => {
-        alert("medidas salvas")
-        this.router.navigate(['home']);
-      }, error => {
-        console.log("deu erro", error)
-      }
-    )
-
+  saveMeasures() {
+    if (this.formMeasuresRegister.valid) {
+      const measures: Measures = this.formMeasuresRegister.value;
+      this.createMeasuresService.createMeasure(measures).subscribe(
+        resposta => {
+          alert("Medidas salvas");
+          this.router.navigate(['home']);
+        },
+        error => {
+          console.log("Deu erro", error);
+        }
+      );
+    } else {
+      console.log("Formulário inválido");
+    }
   }
-  cancel(){
+
+  cancel() {
     this.router.navigate(['home']);
   }
-
 }

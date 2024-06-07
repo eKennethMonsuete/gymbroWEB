@@ -48,10 +48,9 @@ export class DeleteMeasuresComponent implements OnInit {
       if (this.measureId !== 0) {
         this.deleteMeasuresService.deleteMeasure(this.measureId).subscribe(response => {
           console.log('Medida excluída com sucesso:', response);
-          if (this.modal) {
-            this.modal.hide();
+
             this.router.navigate(['home']);
-          }
+
 
 
         }, error => {

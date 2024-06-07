@@ -1,42 +1,82 @@
-<div class=".container-fluid-lg marginRightLeft marginsides ">
-  <div class="row g-3">
+<div class="container-fluid-lg marginRightLeft">
+  <form class="row g-3" [formGroup]="formMeasuresUpdate" (ngSubmit)="updateMeasure()">
+
     <div class="col-12">
       <label for="pesoAtual" class="form-label">Peso</label>
-      <input type="number" [(ngModel)]="measure.weight" class="form-control" id="pesoAtual">
+      <input type="number" formControlName="weight" class="form-control" id="pesoAtual" [ngClass]="{'is-invalid': formMeasuresUpdate.get('weight')?.invalid && formMeasuresUpdate.get('weight')?.touched, 'is-valid': formMeasuresUpdate.get('weight')?.valid && formMeasuresUpdate.get('weight')?.touched}">
+      <div *ngIf="formMeasuresUpdate.get('weight')?.invalid && formMeasuresUpdate.get('weight')?.touched" class="invalid-feedback">
+        Peso é obrigatório e deve ser um número positivo.
+      </div>
     </div>
+
     <div class="col-12">
       <label for="cintura" class="form-label">Quadril</label>
-      <input type="number" [(ngModel)]="measure.waist" class="form-control" id="cintura">
+      <input type="number" formControlName="waist" class="form-control" id="cintura" [ngClass]="{'is-invalid': formMeasuresUpdate.get('waist')?.invalid && formMeasuresUpdate.get('waist')?.touched, 'is-valid': formMeasuresUpdate.get('waist')?.valid && formMeasuresUpdate.get('waist')?.touched}">
+      <div *ngIf="formMeasuresUpdate.get('waist')?.invalid && formMeasuresUpdate.get('waist')?.touched" class="invalid-feedback">
+        Quadril é obrigatório e deve ser um número positivo.
+      </div>
     </div>
 
     <div class="col-md-6">
       <label for="bicepsEsquerdo" class="form-label">Biceps Esquerdo</label>
-      <input type="number" [(ngModel)]="measure.left_biceps" class="form-control" id="bicepsEsquerdo">
+      <input type="number" formControlName="left_biceps" class="form-control" id="bicepsEsquerdo" [ngClass]="{'is-invalid': formMeasuresUpdate.get('left_biceps')?.invalid && formMeasuresUpdate.get('left_biceps')?.touched, 'is-valid': formMeasuresUpdate.get('left_biceps')?.valid && formMeasuresUpdate.get('left_biceps')?.touched}">
+      <div *ngIf="formMeasuresUpdate.get('left_biceps')?.invalid && formMeasuresUpdate.get('left_biceps')?.touched" class="invalid-feedback">
+        Biceps Esquerdo é obrigatório e deve ser um número positivo.
+      </div>
     </div>
+
     <div class="col-md-6">
       <label for="bicepsDireiro" class="form-label">Biceps Direito</label>
-      <input type="number" [(ngModel)]="measure.right_biceps" class="form-control" id="bicepsDireito">
+      <input type="number" formControlName="right_biceps" class="form-control" id="bicepsDireito" [ngClass]="{'is-invalid': formMeasuresUpdate.get('right_biceps')?.invalid && formMeasuresUpdate.get('right_biceps')?.touched, 'is-valid': formMeasuresUpdate.get('right_biceps')?.valid && formMeasuresUpdate.get('right_biceps')?.touched}">
+      <div *ngIf="formMeasuresUpdate.get('right_biceps')?.invalid && formMeasuresUpdate.get('right_biceps')?.touched" class="invalid-feedback">
+        Biceps Direito é obrigatório e deve ser um número positivo.
+      </div>
     </div>
 
     <div class="col-md-6">
       <label for="quadricepsEsquerdo" class="form-label">Quadriceps Esquerdo</label>
-      <input type="number" [(ngModel)]="measure.left_quadriceps" class="form-control" id="quadricepsEsquerdo">
+      <input type="number" formControlName="left_quadriceps" class="form-control" id="quadricepsEsquerdo" [ngClass]="{'is-invalid': formMeasuresUpdate.get('left_quadriceps')?.invalid && formMeasuresUpdate.get('left_quadriceps')?.touched, 'is-valid': formMeasuresUpdate.get('left_quadriceps')?.valid && formMeasuresUpdate.get('left_quadriceps')?.touched}">
+      <div *ngIf="formMeasuresUpdate.get('left_quadriceps')?.invalid && formMeasuresUpdate.get('left_quadriceps')?.touched" class="invalid-feedback">
+        Quadriceps Esquerdo é obrigatório e deve ser um número positivo.
+      </div>
     </div>
+
     <div class="col-md-6">
       <label for="QuadricepsDireiro" class="form-label">Quadriceps Direito</label>
-      <input type="number" [(ngModel)]="measure.right_quadriceps" class="form-control" id="QuadricepsDireito">
+      <input type="number" formControlName="right_quadriceps" class="form-control" id="QuadricepsDireito" [ngClass]="{'is-invalid': formMeasuresUpdate.get('right_quadriceps')?.invalid && formMeasuresUpdate.get('right_quadriceps')?.touched, 'is-valid': formMeasuresUpdate.get('right_quadriceps')?.valid && formMeasuresUpdate.get('right_quadriceps')?.touched}">
+      <div *ngIf="formMeasuresUpdate.get('right_quadriceps')?.invalid && formMeasuresUpdate.get('right_quadriceps')?.touched" class="invalid-feedback">
+        Quadriceps Direito é obrigatório e deve ser um número positivo.
+      </div>
     </div>
 
     <div class="col-md-6">
       <label for="panturrilhaEsquerdo" class="form-label">Panturrilha Esquerdo</label>
-      <input type="number" [(ngModel)]="measure.left_calf" class="form-control" id="panturrilhaEsquerdo">
+      <input type="number" formControlName="left_calf" class="form-control" id="panturrilhaEsquerdo" [ngClass]="{'is-invalid': formMeasuresUpdate.get('left_calf')?.invalid && formMeasuresUpdate.get('left_calf')?.touched, 'is-valid': formMeasuresUpdate.get('left_calf')?.valid && formMeasuresUpdate.get('left_calf')?.touched}">
+      <div *ngIf="formMeasuresUpdate.get('left_calf')?.invalid && formMeasuresUpdate.get('left_calf')?.touched" class="invalid-feedback">
+        Panturrilha Esquerdo é obrigatório e deve ser um número positivo.
+      </div>
     </div>
+
     <div class="col-md-6">
-      <label for="panturrilhaDireiro" class="form-label">Panturrilha Direito</label>
-      <input type="number" [(ngModel)]="measure.right_calf" class="form-control"  id="panturrilhaDireito">
+      <label for="panturrilhaDireito" class="form-label">Panturrilha Direito</label>
+      <input type="number" formControlName="right_calf" class="form-control" id="panturrilhaDireito" [ngClass]="{'is-invalid': formMeasuresUpdate.get('right_calf')?.invalid && formMeasuresUpdate.get('right_calf')?.touched, 'is-valid': formMeasuresUpdate.get('right_calf')?.valid && formMeasuresUpdate.get('right_calf')?.touched}">
+      <div *ngIf="formMeasuresUpdate.get('right_calf')?.invalid && formMeasuresUpdate.get('right_calf')?.touched" class="invalid-feedback">
+        Panturrilha Direito é obrigatório e deve ser um número positivo.
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <label for="date" class="form-label">Data</label>
+      <input type="date" formControlName="date" class="form-control" id="date" [ngClass]="{'is-invalid': formMeasuresUpdate.get('date')?.invalid && formMeasuresUpdate.get('date')?.touched, 'is-valid': formMeasuresUpdate.get('date')?.valid && formMeasuresUpdate.get('date')?.touched}">
+      <div *ngIf="formMeasuresUpdate.get('date')?.invalid && formMeasuresUpdate.get('date')?.touched" class="invalid-feedback">
+        Data é obrigatória.
+      </div>
     </div>
 
     <div class="col-12">
-      <button type="submit" (click)="updateMeasure()" class="btn btn-primary">Atualizar Medidas</button>
-      <button type="submit" (click)="cancel()" class="btn  btn-danger">Cancelar</button>
+      <button type="submit" class="btn btn-primary">Atualizar Medidas</button>
+      <button type="button" (click)="cancel()" class="btn btn-danger">Cancelar</button>
     </div>
+
+  </form>
+</div>
