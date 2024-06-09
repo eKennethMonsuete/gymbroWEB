@@ -19,7 +19,7 @@ export class UserCreateComponent implements OnInit {
 
 
   constructor(private UserCreateService : UserCreateService,
-              private router : Router, private formBuilder : FormBuilder
+              private router : Router
   ) {
 
     this.formUserRegister = new FormGroup({

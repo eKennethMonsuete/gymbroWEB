@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { User } from './user';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserUpdateService } from './user-update.service';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { onlyLettersValidator } from 'src/app/validators/lettersValidator';
+import { onlyNumbersValidator } from 'src/app/validators/numberValidator';
 
 @Component({
   selector: 'app-user-update',
@@ -10,22 +13,31 @@ import { UserUpdateService } from './user-update.service';
 })
 export class UserUpdateComponent implements OnInit {
 
-  user : User = {
+  formUserUpdate!: FormGroup;
+  user: User = {
     id: 0,
-    name : "",
-    surname : "",
-    email : "",
-    whatsapp : "",
-    password :"",
-    secondPassword : ""
-
-
-  }
+    name: "",
+    surname: "",
+    email: "",
+    whatsapp: "",
+    password: "",
+    secondPassword: ""
+  };
 
   constructor(
-    private userUpdateService : UserUpdateService,
+    private userUpdateService: UserUpdateService,
     private route: ActivatedRoute,
-    private router : Router) { }
+    private router: Router
+  ) {
+    this.formUserUpdate = new FormGroup({
+      name: new FormControl('', [Validators.required, onlyLettersValidator()]),
+      surname: new FormControl('', [onlyLettersValidator()]),
+      email: new FormControl('', [Validators.required, Validators.email]),
+      whatsapp: new FormControl('', [Validators.required, onlyNumbersValidator()]),
+      password: new FormControl('', [Validators.required, Validators.minLength(6)]),
+      secondPassword: new FormControl('', [Validators.required, Validators.minLength(6)])
+    });
+  }
 
   ngOnInit(): void {
     const idString = this.route.snapshot.paramMap.get('id');
@@ -35,13 +47,14 @@ export class UserUpdateComponent implements OnInit {
         this.user.id = id;
         this.userUpdateService.findUserById(id).subscribe(
           user => {
-            // Atualizar apenas os campos relevantes
-            this.user.name = user.name;
-            this.user.surname = user.surname;
-            this.user.email = user.email;
-            this.user.whatsapp = user.whatsapp;
-            // Atualizar outros campos se necessário
-            console.log('User data loaded:', this.user);
+            this.formUserUpdate.patchValue({
+              name: user.name,
+              surname: user.surname,
+              email: user.email,
+              whatsapp: user.whatsapp
+              // Não preenchemos os campos de senha para segurança
+            });
+            console.log('User data loaded:', user);
           },
           error => {
             console.error('Error fetching user data:', error);
@@ -55,27 +68,33 @@ export class UserUpdateComponent implements OnInit {
     }
   }
 
-  updateUser(){
-    console.log('User ID to update:', this.user.id);
-    if (this.user.password === this.user.secondPassword) {
-      this.userUpdateService.updateUser(this.user.id , this.user).subscribe(
-        response => {
-          console.log('metodo', this.user.id);
-          console.log('User updated successfully');
-          alert("deu  certo finalkmente")
-          this.router.navigate(['home']);
-        },
-        error => {
-          console.error('Error updating user:', error);
-        }
-      );
+  updateUser(): void {
+    if (this.formUserUpdate.valid) {
+      const updatedUser: User = {
+        ...this.user,
+        ...this.formUserUpdate.value
+      };
+
+      if (updatedUser.password === updatedUser.secondPassword) {
+        this.userUpdateService.updateUser(this.user.id, updatedUser).subscribe(
+          response => {
+            console.log('User updated successfully');
+            alert("Atualização realizada com sucesso!");
+            this.router.navigate(['home']);
+          },
+          error => {
+            console.error('Error updating user:', error);
+          }
+        );
+      } else {
+        console.error('Passwords do not match');
+      }
     } else {
-      console.error('Passwords do not match');
+      console.error('Form is invalid');
     }
   }
 
-  cancel(){
+  cancel(): void {
     this.router.navigate(['home']);
   }
-
 }

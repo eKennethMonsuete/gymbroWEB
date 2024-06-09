@@ -1,51 +1,100 @@
 <div class=".container-fluid-lg marginRightLeft ">
-  <div class="row g-3"  >
+  <form class="row g-3" [formGroup]="formUserUpdate">
 
-    <div class="col-6">
-      <label for="nome" class="form-label">Nome:</label>
-      <input type="text" class="form-control" id="nome" [(ngModel)]="user.name">
+    <!-- Campo Nome -->
+    <div class="col-md-6">
+      <label for="nome" class="form-label">Nome</label>
+      <input type="text" class="form-control" id="nome" formControlName="name" [ngClass]="{
+        'is-invalid': formUserUpdate.get('name')?.invalid && formUserUpdate.get('name')?.touched,
+        'is-valid': formUserUpdate.get('name')?.valid && formUserUpdate.get('name')?.touched
+      }">
+      <div *ngIf="formUserUpdate.get('name')?.invalid && formUserUpdate.get('name')?.touched" class="invalid-feedback">
+        Digite seu nome, apenas letras são permitidas!
+      </div>
+      <div *ngIf="formUserUpdate.get('name')?.valid && formUserUpdate.get('name')?.touched" class="valid-feedback">
+        Tudo correto!
+      </div>
     </div>
 
-    <div class="col-6">
-      <label for="sobrenome" class="form-label">Sobrenome:</label>
-      <input type="text" class="form-control" id="sobrenome" [(ngModel)]="user.surname" >
+    <!-- Campo Sobrenome -->
+    <div class="col-md-6">
+      <label for="sobrenome" class="form-label">Sobrenome</label>
+      <input type="text" class="form-control" id="sobrenome" formControlName="surname" [ngClass]="{
+        'is-invalid': formUserUpdate.get('surname')?.invalid && formUserUpdate.get('surname')?.touched,
+        'is-valid': formUserUpdate.get('surname')?.valid && formUserUpdate.get('surname')?.touched
+      }">
+      <div *ngIf="formUserUpdate.get('surname')?.touched && formUserUpdate.get('surname')?.invalid" class="invalid-feedback">
+        <div *ngIf="formUserUpdate.get('surname')?.errors?.['onlyLetters']">Apenas letras são permitidas</div>
+      </div>
+      <div *ngIf="formUserUpdate.get('surname')?.valid && formUserUpdate.get('surname')?.touched" class="valid-feedback">
+        Tudo certo!
+      </div>
     </div>
 
-    <div class="col-6">
-      <label for="email" class="form-label">Email:</label>
-      <input type="email" class="form-control" id="email" [(ngModel)]="user.email">
+    <!-- Campo Email asd -->
+    <div class="col-md-6">
+      <label for="email" class="form-label">Email</label>
+      <input type="email" class="form-control" id="email" formControlName="email" [ngClass]="{
+        'is-invalid': formUserUpdate.get('email')?.invalid && formUserUpdate.get('email')?.touched,
+        'is-valid': formUserUpdate.get('email')?.valid && formUserUpdate.get('email')?.touched
+      }">
+      <div *ngIf="formUserUpdate.get('email')?.invalid && formUserUpdate.get('email')?.touched" class="invalid-feedback">
+        Digite um e-mail válido. Exemplo: exemplo@exemplo.com
+      </div>
+      <div *ngIf="formUserUpdate.get('email')?.valid && formUserUpdate.get('email')?.touched" class="valid-feedback">
+        Tudo certo!
+      </div>
     </div>
 
-    <div class="col-6">
-      <label for="whatsapp" class="form-label">Whatsapp:</label>
-      <input type="text" class="form-control" id="whatsapp" [(ngModel)]="user.whatsapp">
+    <!-- Campo Whatsapp -->
+    <div class="col-md-6">
+      <label for="whatsapp" class="form-label">Whatsapp</label>
+      <input type="text" class="form-control" id="whatsapp" formControlName="whatsapp" [ngClass]="{
+        'is-invalid': formUserUpdate.get('whatsapp')?.invalid && formUserUpdate.get('whatsapp')?.touched,
+        'is-valid': formUserUpdate.get('whatsapp')?.valid && formUserUpdate.get('whatsapp')?.touched
+      }">
+      <div *ngIf="formUserUpdate.get('whatsapp')?.invalid && formUserUpdate.get('whatsapp')?.touched" class="invalid-feedback">
+        Digite apenas números.
+      </div>
+      <div *ngIf="formUserUpdate.get('whatsapp')?.valid && formUserUpdate.get('whatsapp')?.touched" class="valid-feedback">
+        Tudo certo!
+      </div>
     </div>
 
-    <div class="col-6">
-      <label for="senha" class="form-label">Senha:</label>
-      <input type="password" class="form-control" id="senha" [(ngModel)]="user.password">
+    <!-- Campo Senha -->
+    <div class="col-md-6">
+      <label for="senha" class="form-label">Senha</label>
+      <input type="password" class="form-control" id="senha" formControlName="password" [ngClass]="{
+        'is-invalid': formUserUpdate.get('password')?.invalid && formUserUpdate.get('password')?.touched,
+        'is-valid': formUserUpdate.get('password')?.valid && formUserUpdate.get('password')?.touched
+      }">
+      <div *ngIf="formUserUpdate.get('password')?.invalid && formUserUpdate.get('password')?.touched" class="invalid-feedback">
+        Digite sua senha com pelo menos 6 dígitos.
+      </div>
+      <div *ngIf="formUserUpdate.get('password')?.valid && formUserUpdate.get('password')?.touched" class="valid-feedback">
+        Tudo certo!
+      </div>
     </div>
 
-    <div class="col-6">
-      <label for="repetirSenha" class="form-label">Repetir Senha:</label>
-      <input type="password" class="form-control" id="repetirSenha" [(ngModel)]="user.secondPassword">
+    <!-- Campo Repetir Senha -->
+    <div class="col-md-6">
+      <label for="repetirSenha" class="form-label">Repetir Senha</label>
+      <input type="password" class="form-control" id="repetirSenha" formControlName="secondPassword" [ngClass]="{
+        'is-invalid': formUserUpdate.get('secondPassword')?.invalid && formUserUpdate.get('secondPassword')?.touched,
+        'is-valid': formUserUpdate.get('secondPassword')?.valid && formUserUpdate.get('secondPassword')?.touched
+      }">
+      <div *ngIf="formUserUpdate.get('secondPassword')?.invalid && formUserUpdate.get('secondPassword')?.touched" class="invalid-feedback">
+        Confirme sua senha de 6 dígitos.
+      </div>
+      <div *ngIf="formUserUpdate.get('secondPassword')?.valid && formUserUpdate.get('secondPassword')?.touched" class="valid-feedback">
+        Tudo certo!
+      </div>
     </div>
-
-
-
-
-
 
     <div class="col-12">
-      <button  type="submit" (click)="updateUser()" class="btn btn-primary">Atualizar</button>
-      <button type="submit" (click)="cancel()" class="btn  btn-danger">Cancelar</button>
+      <button (click)="updateUser()" [disabled]="formUserUpdate.invalid" type="submit" class="btn btn-primary">Atualizar</button>
+      <button type="submit" (click)="cancel()" class="btn btn-danger">Cancelar</button>
     </div>
 
-  </div>
-
+  </form>
 </div>
-
-
-
-
-

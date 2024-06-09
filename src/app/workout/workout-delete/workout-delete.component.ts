@@ -46,9 +46,9 @@ export class WorkoutDeleteComponent implements OnInit {
     if(this.workout.id){
       this.workoutDeleteService.deleteWorkout(this.workout.id).subscribe(() =>
       {
-
-
         this.router.navigate(["workout"])
+
+
 
       }, error =>{
         console.log(error)
@@ -57,7 +57,7 @@ export class WorkoutDeleteComponent implements OnInit {
   }
 
   cancel(){
-    this.modal.hide();
+
     this.router.navigate(['workout']);
   }
 
