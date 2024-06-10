@@ -1,20 +1,18 @@
 <div class="card">
-  <div class="card-body">
-    Seja Bem-Vindo. {{  name }}
+  <div class="card-body text-center">
+    Seja Bem-Vindo, {{ name }}
   </div>
 </div>
 
-<div class="card mb-3" style="max-width: 540px;">
+
+<div class="card mb-3" style="max-width: 500px;">
   <div class="row g-0">
-    <div class="col-md-4">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/c/c9/RONNIE_COLEMAN.jpg" class="img-fluid rounded-start" alt="uma imagem de alguem forte aqui">
-    </div>
+
     <div class="col-md-8">
       <div class="card-body">
-        <h5 class="card-title">Nome da Pessoa "</h5>
-        <p class="card-text">Alguma coisa </p>
-        <p class="card-text">Alguma coisa </p>
-        <p class="card-text">Alguma coisa </p>
+        <h5 class="card-title">Usuário : {{  name }}</h5>
+        <p class="card-text">WhatApp : {{user.whatsapp}}  </p>
+
         <button type="button" [routerLink]="['/updateuser', idUser]" [disabled]="idUser === null" class="btn btn-outline-danger">Editar meu user</button>
         <button type="button" routerLink="/creatework" class="btn btn-outline-danger">  Criar treino público</button>
       </div>
@@ -24,10 +22,16 @@
 
 
 
-
+<button type="button" class="btn btn-outline-dark btnMargin" routerLink="/createmeasures">Adicionar Nova Medida</button>
 
 <div *ngIf="measures && measures.length">
-  <h3>Minhas Medidas</h3>
+
+  <div class="card colorBody">
+    <div class="card-body">
+      <h3>Minhas Medidas</h3>
+
+    </div>
+  </div>
   <div class="row">
     <div *ngFor="let measure of measures; let i = index" class="col-6 col-md-4 col-lg-3 col-xl-2 p-1">
       <div class="card" style="width: 100%;">

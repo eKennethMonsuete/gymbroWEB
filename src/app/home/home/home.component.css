@@ -7,3 +7,11 @@
   margin-bottom: 5px; /* ajuste conforme necessário */
 }
 
+.colorBody{
+  background-color: rgb(199, 199, 202);
+}
+
+.btnMargin{
+  margin: 10px;
+}
+

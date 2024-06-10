@@ -19,7 +19,7 @@ export class HeaderComponent implements OnInit {
 
   deslogar(){
     this.loginService.logout();
-    console.log("é para ter excluíto o token do local storage")
+    console.log("é para ter excluíto o token do local storage e do session")
     this.router.navigate([''])
   }
 

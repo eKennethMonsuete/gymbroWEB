@@ -1,3 +1,4 @@
+
 <nav class="navbar navbar-light bg-light navbar-expand-lg">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">
@@ -8,12 +9,12 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
-      <ul class="navbar-nav">
+      <ul class="navbar-nav me-auto">
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" routerLink="/home">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/createmeasures">+Medidas</a>
+          <a class="nav-link">+Medidas</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" routerLink="/workout">Treinos</a>
@@ -31,10 +32,9 @@
             <li><a class="dropdown-item" href="#">Something else here</a></li>
           </ul>
         </li>
-        <li>
-          <button (click)="deslogar()" type="button" class="btn btn-outline-danger">Sair</button>
-        </li>
       </ul>
+      <button (click)="deslogar()" type="button" class="btn btn-outline-danger ms-auto">Sair</button>
     </div>
   </div>
 </nav>
+

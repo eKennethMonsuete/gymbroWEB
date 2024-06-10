@@ -36,33 +36,27 @@
     </div>
 
     <!-- Div na Direita -->
-    <div class="col-lg-6 right-div d-flex justify-content-center align-items-center">
-      <div class="centered-div">
-        <p>Entrar</p>
+<div class="col-lg-6 right-div d-flex justify-content-center align-items-center min-vh-100 bg-light">
+  <div class="centered-div p-4 shadow-lg rounded bg-white w-100" style="max-width: 400px;">
+    <h2 class="text-center mb-4">Entre ou Faça seu Cadastro!</h2>
 
-        <div class="row mb-3">
-          <label for="email" class="col-sm-2 col-form-label">Email</label>
-          <div class="col-sm-10">
-            <input [(ngModel)]="loginUser.email" name="email" type="email" class="form-control" id="email" placeholder="senha">
-          </div>
+    <div class="mb-3">
+      <label for="email" class="form-label">Email</label>
+      <input [(ngModel)]="loginUser.email" name="email" type="email" class="form-control" id="email" placeholder="Digite seu email">
+    </div>
 
-          <div class="row mb-3">
-            <label for="password" class="col-sm-2 col-form-label">Senha</label>
-            <div class="col-sm-10">
-              <input  [(ngModel)]="loginUser.password" name="password" type="password" class="form-control" id="colFormLabel" placeholder="senha">
-            </div>
+    <div class="mb-3">
+      <label for="password" class="form-label">Senha</label>
+      <input [(ngModel)]="loginUser.password" name="password" type="password" class="form-control" id="password" placeholder="Digite sua senha">
+    </div>
 
-            <div class="col-12">
-              <button type="submit" (click)="submit()" class="btn btn-primary">Entrar</button>
-            </div>
+    <div class="d-grid mb-3">
+      <button type="submit" (click)="submit()" class="btn btn-outline-dark" >Entrar</button>
+    </div>
 
-            <div>
-              <p>Ainda não está cadatrado. Faça seu cadastro <a routerLink="/createuser" >Aqui</a></p>
-            </div>
-
-
-
-      </div>
+    <div class="text-center">
+      <p>Ainda não está cadastrado? <a routerLink="/createuser" class="link-primary" >Faça seu cadastro aqui</a></p>
     </div>
   </div>
 </div>
+
