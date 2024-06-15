@@ -1,0 +1,33 @@
+<div  class="card">
+
+  <div class="card-body">
+    <h5 class="card-title">MEUS TREINOS</h5>
+    <p class="card-text">MEU TREINO</p>
+
+  </div>
+</div>
+
+
+<div class="row row-cols-1 row-cols-md-2 g-4">
+
+
+  <div class="card border-secondary mb-3 card-spacing" *ngFor="let workouts of exclusiveWorkout" style="max-width: 18rem;">
+    <!-- <div class="card-header">{{workouts.}}</div> -->
+    <div class="card-body text-secondary">
+      <h5 class="card-title">{{workouts.nome}}</h5>
+      <p class="card-text">Professor:{{workouts.objetivo}}</p>
+      <p class="card-text">Treino:{{workouts.workout1}}</p>
+      <p class="card-text">Treino:{{workouts.workout2}}</p>
+      <p class="card-text">Treino: {{workouts.workout3}}</p>
+      <p class="card-text">Descrição: {{workouts.descricao}}</p>
+      <p class="card-text">Data:{{workouts.registrationDate}}</p>
+      <p class="card-text">Professor:{{workouts.autor}}</p>
+      <p class="card-text">id:{{workouts.id}}</p>
+
+    </div>
+          <div class="card-footer">
+              <button routerLink="/urlaqui/{{workouts.id}}" class="btn btn-outline-info">ATUALIZAR</button>
+              <button routerLink="//{{workouts.id}}" class="btn btn-outline-danger">DELETAR</button>
+          </div>
+  </div>
+

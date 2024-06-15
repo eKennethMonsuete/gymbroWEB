@@ -14,6 +14,7 @@ import { UpdateMeasuresComponent } from './measures/update-measures/update-measu
 import { UserUpdateComponent } from './user/user-update/user-update.component';
 import { WorkoutUpdateComponent } from './workout/workout-update/workout-update.component';
 import { WorkoutDeleteComponent } from './workout/workout-delete/workout-delete.component';
+import { ListExclusiveWorkoutComponent } from './exclusiveWorkout/list-exclusiveWorkout/list-exclusive-workout.component';
 
 const routes: Routes = [
 
@@ -27,7 +28,8 @@ const routes: Routes = [
   {path: "updatemeasure/:id", component: UpdateMeasuresComponent, canActivate: [authGuard]},
   {path: "updateuser/:id", component: UserUpdateComponent, canActivate: [authGuard]},
   {path: "updateworkout/:id", component: WorkoutUpdateComponent, canActivate: [authGuard]},
-  {path: "deleteworkout/:id", component: WorkoutDeleteComponent, canActivate: [authGuard]}
+  {path: "deleteworkout/:id", component: WorkoutDeleteComponent, canActivate: [authGuard]},
+  {path:"myworkout", component : ListExclusiveWorkoutComponent }
 
 ];
 

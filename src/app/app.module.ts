@@ -25,6 +25,12 @@ import { UpdateMeasuresComponent } from './measures/update-measures/update-measu
 import { WorkoutDeleteComponent } from './workout/workout-delete/workout-delete.component';
 import { WorkoutUpdateComponent } from './workout/workout-update/workout-update.component';
 
+import { CommonModule } from '@angular/common';
+import { UpdateExclusiveWorkoutComponent } from './exclusiveWorkout/update-exclusiveWorkout/update-exclusive-workout.component';
+import { ListExclusiveWorkoutComponent } from './exclusiveWorkout/list-exclusiveWorkout/list-exclusive-workout.component';
+import { DeleteExclusiveWorkoutComponent } from './exclusiveWorkout/delete-exclusiveWorkout/delete-exclusive-workout.component';
+import { CreateExclusiveWorkoutComponent } from './exclusiveWorkout/create-exclusiveWorkout/create-exclusive-workout.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,6 +49,11 @@ import { WorkoutUpdateComponent } from './workout/workout-update/workout-update.
     UpdateMeasuresComponent,
     WorkoutDeleteComponent,
     WorkoutUpdateComponent,
+    ListExclusiveWorkoutComponent,
+    CreateExclusiveWorkoutComponent,
+    DeleteExclusiveWorkoutComponent,
+    ListExclusiveWorkoutComponent,
+    UpdateExclusiveWorkoutComponent,
 
   ],
   imports: [
@@ -50,7 +61,9 @@ import { WorkoutUpdateComponent } from './workout/workout-update/workout-update.
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    CommonModule
+
 
   ],
   providers: [LoginService,
