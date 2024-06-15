@@ -3,7 +3,7 @@
 
     <!-- Campo Name -->
     <div class="col-md-6">
-      <label for="name" class="form-label">Name</label>
+      <label for="name" class="form-label">Nome</label>
       <input type="text" class="form-control" id="name" formControlName="name" [ngClass]="{'is-invalid': formUserRegister.get('name')?.invalid && formUserRegister.get('name')?.touched, 'is-valid': formUserRegister.get('name')?.valid && formUserRegister.get('name')?.touched}">
       <div *ngIf="formUserRegister.get('name')?.invalid && formUserRegister.get('name')?.touched" class="invalid-feedback">
         Digite seu nome, apenas letras são permitidas!
@@ -15,7 +15,7 @@
 
    <!-- Campo Surname -->
   <div class="col-md-6">
-    <label for="surname" class="form-label">Surname</label>
+    <label for="surname" class="form-label">Sobrenome</label>
     <input type="text" class="form-control" id="surname" formControlName="surname" [ngClass]="{
       'is-invalid': formUserRegister.get('surname')?.invalid && formUserRegister.get('surname')?.touched,
       'is-valid': formUserRegister.get('surname')?.valid && formUserRegister.get('surname')?.touched
@@ -29,7 +29,7 @@
   </div>
 
   <div class="col-md-6">
-    <label for="email" class="form-label">Email</label>
+    <label for="email" class="form-label">E-mail</label>
     <input type="email" class="form-control" id="email" formControlName="email" [ngClass]="{'is-invalid': formUserRegister.get('email')?.invalid && formUserRegister.get('email')?.touched, 'is-valid': formUserRegister.get('email')?.valid && formUserRegister.get('email')?.touched}">
     <div *ngIf="formUserRegister.get('email')?.invalid && formUserRegister.get('email')?.touched" class="invalid-feedback">
       Digite um e-mail válido. Exemplo : exemploAexemplo.com
@@ -54,7 +54,7 @@
 
     <!-- Campo Password -->
     <div class="col-md-6">
-      <label for="password" class="form-label">Password</label>
+      <label for="password" class="form-label">Senha</label>
       <input type="password" class="form-control" id="password" formControlName="password" [ngClass]="{'is-invalid': formUserRegister.get('password')?.invalid && formUserRegister.get('password')?.touched, 'is-valid': formUserRegister.get('password')?.valid && formUserRegister.get('password')?.touched}">
       <div *ngIf="formUserRegister.get('password')?.invalid && formUserRegister.get('password')?.touched" class="invalid-feedback">
         Digite sua senha com pelo menos 6 digitos.
@@ -66,7 +66,7 @@
 
     <!-- Campo Confirm Password -->
     <div class="col-md-6">
-      <label for="secondPassword" class="form-label">Confirm Password</label>
+      <label for="secondPassword" class="form-label">Confirma senha</label>
       <input type="password" class="form-control" id="secondPassword" formControlName="secondPassword" [ngClass]="{'is-invalid': formUserRegister.get('secondPassword')?.invalid && formUserRegister.get('secondPassword')?.touched, 'is-valid': formUserRegister.get('secondPassword')?.valid && formUserRegister.get('secondPassword')?.touched}">
       <div *ngIf="formUserRegister.get('secondPassword')?.invalid && formUserRegister.get('secondPassword')?.touched" class="invalid-feedback">
         Confirme sua senha de 6 digitos.
@@ -80,8 +80,8 @@
 
 
     <div class="col-12">
-      <button (click)="registerUser()" [disabled]="formUserRegister.invalid" type="submit" class="btn btn-primary">Cadastrar Usuário</button>
-      <button type="submit" (click)="cancel()" class="btn  btn-danger">Cancelar</button>
+      <button (click)="registerUser()" [disabled]="formUserRegister.invalid" type="submit" class="btn btn-outline-dark btnMargin ">Cadastrar Usuário</button>
+      <button type="submit" (click)="cancel()" class="btn btn-outline-danger btnMargin">Voltar</button>
     </div>
 
   </form>

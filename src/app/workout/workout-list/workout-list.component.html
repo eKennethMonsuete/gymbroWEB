@@ -1,8 +1,8 @@
 <div  class="card">
 
   <div class="card-body">
-    <h5 class="card-title">TREINOS LIVRES</h5>
-    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+    <h5 class="card-title">TREINOS PÚBLICOS</h5>
+    <p class="card-text">Escolha um treino de acordo com o seu perfil.</p>
 
   </div>
 </div>
@@ -12,9 +12,9 @@
 
 
   <div class="card border-secondary mb-3 card-spacing" *ngFor="let workouts of workoutList" style="max-width: 18rem;">
-    <div class="card-header">{{workouts.workoutName}}</div>
+    <!-- <div class="card-header">{{workouts.workoutName}}</div> -->
     <div class="card-body text-secondary">
-      <h5 class="card-title">Secondary card title</h5>
+      <h5 class="card-title">{{workouts.workoutName}}</h5>
       <p class="card-text">Treino:{{workouts.workout1}}</p>
       <p class="card-text">Treino:{{workouts.workout2}}</p>
       <p class="card-text">Descrição: {{workouts.note}}</p>
