@@ -79,7 +79,7 @@ export class UserUpdateComponent implements OnInit {
         this.userUpdateService.updateUser(this.user.id, updatedUser).subscribe(
           response => {
             console.log('User updated successfully');
-            alert("Atualização realizada com sucesso!");
+
             this.router.navigate(['home']);
           },
           error => {

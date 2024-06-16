@@ -55,7 +55,7 @@ export class UserCreateComponent implements OnInit {
 
           this.UserCreateService.saveUser(user).subscribe(
             resposta => {
-              alert("User cadastrado com sucesso");
+
               this.router.navigate(['']);
             },
             error => {

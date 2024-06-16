@@ -62,7 +62,7 @@ export class UpdateExclusiveWorkoutComponent implements OnInit {
       };
       this.updateExclusiveWorkoutService.updateMyWorkout(this.myWorkoutID, updatedMyWorkout).subscribe(
         response => {
-          alert('deu certo');
+
           this.router.navigate(['myworkout']);
         }, error =>{
           console.log(error)

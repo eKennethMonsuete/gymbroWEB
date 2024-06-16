@@ -60,7 +60,7 @@ export class WorkoutUpdateComponent implements OnInit {
 
       this.workoutUpdateService.updateWorkout(workout.id, workout).subscribe(
       resposta => {
-        alert("treino atualizado")
+
         this.router.navigate(['workout']);
 
       }, error =>{

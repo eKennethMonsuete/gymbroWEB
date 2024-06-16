@@ -57,7 +57,7 @@ export class CreateExclusiveWorkoutComponent implements OnInit {
       const exclusiveWorkout: ExclusiveWorkout = this.formMyWorkoutRegister.value;
       this.ereateExclusiveWorkoutService.createMyWorkout(exclusiveWorkout).subscribe(
         resposta => {
-          alert("Meu Treino Exclusivo foi salvo");
+
           this.router.navigate(['myworkout']);
         },
         error => {

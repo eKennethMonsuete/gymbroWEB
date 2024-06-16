@@ -30,7 +30,7 @@ export class DeleteExclusiveWorkoutComponent implements OnInit {
     if (this.myWorkoutID) {
       this.deleteExclusiveWorkoutService.deleteMyWorkout(this.myWorkoutID).subscribe(
         response => {
-          alert('Treino excluído com sucesso');
+
           this.router.navigate(['myworkout']);
         }, error => {
           console.error('Erro ao excluir treino', error);

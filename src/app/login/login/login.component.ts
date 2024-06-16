@@ -18,31 +18,35 @@ interface User{
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  loginUser: User = { email: "", password: "", name: "" };
+  loginError: boolean = false; // Variável para controlar a mensagem de erro
+  emptyFieldsError: boolean = false; // Variável para controlar o erro de campos vazios
 
-  loginUser : User = {email: "", password: "", name: ""}
+  constructor(private LoginService: LoginService, private route: Router) { }
 
-  constructor( private LoginService : LoginService,
-    private route : Router
-  ) { }
+  ngOnInit(): void { }
 
-  ngOnInit(): void {
-  }
+  submit() {
+    // Verificação de campos vazios
+    if (!this.loginUser.email || !this.loginUser.password) {
+      this.emptyFieldsError = true;
+      this.loginError = false;
+      return;
+    }
 
-  submit(){
     this.LoginService.login(this.loginUser.email, this.loginUser.password).subscribe(
-      resposta =>{
-        alert("deu certo")
-        console.log(resposta)
-        this.route.navigate(["/home"])
+      resposta => {
 
-
-      }, error => {
-        console.log(error)
+        console.log(resposta);
+        this.loginError = false;
+        this.emptyFieldsError = false;
+        this.route.navigate(["/home"]);
+      },
+      error => {
+        console.log(error);
+        this.loginError = true;
+        this.emptyFieldsError = false;
       }
-    )
-
-
-
+    );
   }
-
 }

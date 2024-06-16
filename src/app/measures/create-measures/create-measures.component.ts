@@ -53,7 +53,7 @@ export class CreateMeasuresComponent implements OnInit {
       const measures: Measures = this.formMeasuresRegister.value;
       this.createMeasuresService.createMeasure(measures).subscribe(
         resposta => {
-          alert("Medidas salvas");
+
           this.router.navigate(['home']);
         },
         error => {

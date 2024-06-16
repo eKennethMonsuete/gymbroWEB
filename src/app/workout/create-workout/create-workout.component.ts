@@ -57,8 +57,6 @@ export class CreateWorkoutComponent implements OnInit {
 
         this.serviceCreateWorkout.saveWorkout(workout).subscribe(
       resposta => {
-        console.log(workout)
-        alert('treinos foram salvos')
         this.router.navigate(['workout']);
       }, error => {
         console.error(error)

@@ -1,14 +1,7 @@
 <div class="container-fluid">
-
   <div class="row">
-
-
-
-
     <!-- Div na Esquerda -->
     <div class="col-lg-6 right-div d-flex justify-content-center align-items-center .container-lg">
-
-
 
         <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
           <div class="carousel-inner">
@@ -40,6 +33,14 @@
   <div class="centered-div p-4 shadow-lg rounded bg-white w-100" style="max-width: 400px;">
     <h2 class="text-center mb-4">Entre ou Faça seu Cadastro!</h2>
 
+    <div *ngIf="loginError" class="alert alert-danger" role="alert">
+      Credenciais inválidas. Por favor, tente novamente.
+    </div>
+
+    <div *ngIf="emptyFieldsError" class="alert alert-warning" role="alert">
+      Por favor, preencha todos os campos.
+    </div>
+
     <div class="mb-3">
       <label for="email" class="form-label">Email</label>
       <input [(ngModel)]="loginUser.email" name="email" type="email" class="form-control" id="email" placeholder="Digite seu email">
@@ -51,12 +52,13 @@
     </div>
 
     <div class="d-grid mb-3">
-      <button type="submit" (click)="submit()" class="btn btn-outline-dark" >Entrar</button>
+      <button type="submit" (click)="submit()" class="btn btn-outline-dark">Entrar</button>
     </div>
 
     <div class="text-center">
-      <p>Ainda não está cadastrado? <a routerLink="/createuser" class="link-primary" >Faça seu cadastro aqui</a></p>
+      <p>Ainda não está cadastrado? <a routerLink="/createuser" class="link-primary">Faça seu cadastro aqui</a></p>
     </div>
   </div>
 </div>
+
 

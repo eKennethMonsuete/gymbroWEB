@@ -59,7 +59,7 @@ export class UpdateMeasuresComponent implements OnInit {
 
       this.updateMeasuresService.updateMeasure(this.measureId, updatedMeasure).subscribe(
         response => {
-          alert('Medidas atualizadas com sucesso');
+
           this.router.navigate(['home']);
         },
         error => {
