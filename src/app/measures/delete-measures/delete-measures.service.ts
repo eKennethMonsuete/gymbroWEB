@@ -28,7 +28,7 @@ export class DeleteMeasuresService {
 
   deleteMeasure(measureId : number): Observable<any>{
     const url = `${this.API}/measures/${measureId}`;
-    return this.http.delete<any>(url)
+    return this.http.delete<any>(url, { responseType: 'text' as 'json' })
   }
 
 

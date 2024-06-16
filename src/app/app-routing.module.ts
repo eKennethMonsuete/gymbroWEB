@@ -15,6 +15,10 @@ import { UserUpdateComponent } from './user/user-update/user-update.component';
 import { WorkoutUpdateComponent } from './workout/workout-update/workout-update.component';
 import { WorkoutDeleteComponent } from './workout/workout-delete/workout-delete.component';
 import { ListExclusiveWorkoutComponent } from './exclusiveWorkout/list-exclusiveWorkout/list-exclusive-workout.component';
+import { CreateExclusiveWorkoutComponent } from './exclusiveWorkout/create-exclusiveWorkout/create-exclusive-workout.component';
+import { UpdateExclusiveWorkoutComponent } from './exclusiveWorkout/update-exclusiveWorkout/update-exclusive-workout.component';
+
+import { DeleteExclusiveWorkoutComponent } from './exclusiveWorkout/delete-exclusiveWorkout/delete-exclusive-workout.component';
 
 const routes: Routes = [
 
@@ -29,7 +33,11 @@ const routes: Routes = [
   {path: "updateuser/:id", component: UserUpdateComponent, canActivate: [authGuard]},
   {path: "updateworkout/:id", component: WorkoutUpdateComponent, canActivate: [authGuard]},
   {path: "deleteworkout/:id", component: WorkoutDeleteComponent, canActivate: [authGuard]},
-  {path:"myworkout", component : ListExclusiveWorkoutComponent }
+  {path:"myworkout", component : ListExclusiveWorkoutComponent, canActivate: [authGuard] },
+  {path:"createmyworkout", component : CreateExclusiveWorkoutComponent, canActivate: [authGuard] },
+  {path:"updatemyworkout/:id", component : UpdateExclusiveWorkoutComponent, canActivate: [authGuard] },
+  {path:"deletemyworkout/:id", component : DeleteExclusiveWorkoutComponent, canActivate: [authGuard] }
+
 
 ];
 

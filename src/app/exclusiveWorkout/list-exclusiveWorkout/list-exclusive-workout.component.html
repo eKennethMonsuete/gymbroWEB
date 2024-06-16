@@ -1,33 +1,50 @@
-<div  class="card">
-
+<div class="card">
   <div class="card-body">
     <h5 class="card-title">MEUS TREINOS</h5>
     <p class="card-text">MEU TREINO</p>
+  </div>
+</div>
+          <div>
+                <button type="button" class="btn btn-outline-dark btnMargin" routerLink="/createmyworkout">Adicionar Novo Treino Pessoal</button>
+          </div>
+<div class="row row-cols-1 row-cols-md-2 g-4">
+  <div class="card border-secondary mb-3 card-spacing" *ngFor="let workout of exclusiveWorkout" style="max-width: 18rem;">
+    <div class="card-body text-secondary">
+      <h5 class="card-title">{{workout.nome}}</h5>
+      <p class="card-text">Objetivo: {{workout.objetivo}}</p>
+      <p class="card-text">Treino 1: {{workout.workout1}}</p>
+      <p class="card-text">Treino 2: {{workout.workout2}}</p>
+      <p class="card-text">Treino 3: {{workout.workout3}}</p>
+      <p class="card-text">Descrição: {{workout.descricao}}</p>
+      <p class="card-text">Data: {{workout.registrationDate}}</p>
+      <p class="card-text">Autor/Professor: {{workout.autor}}</p>
+      <p class="card-text">ID: {{workout.id}}</p>
+    </div>
+    <div class="card-footer">
+      <button routerLink="/updatemyworkout/{{workout.id}}" class="btn btn-outline-info">ATUALIZAR</button>
+      <button (click)="openDeleteModal(workout.id)" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">DELETAR</button>
+    </div>
 
   </div>
 </div>
 
-
-<div class="row row-cols-1 row-cols-md-2 g-4">
-
-
-  <div class="card border-secondary mb-3 card-spacing" *ngFor="let workouts of exclusiveWorkout" style="max-width: 18rem;">
-    <!-- <div class="card-header">{{workouts.}}</div> -->
-    <div class="card-body text-secondary">
-      <h5 class="card-title">{{workouts.nome}}</h5>
-      <p class="card-text">Professor:{{workouts.objetivo}}</p>
-      <p class="card-text">Treino:{{workouts.workout1}}</p>
-      <p class="card-text">Treino:{{workouts.workout2}}</p>
-      <p class="card-text">Treino: {{workouts.workout3}}</p>
-      <p class="card-text">Descrição: {{workouts.descricao}}</p>
-      <p class="card-text">Data:{{workouts.registrationDate}}</p>
-      <p class="card-text">Professor:{{workouts.autor}}</p>
-      <p class="card-text">id:{{workouts.id}}</p>
-
+<!-- Modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="deleteModalLabel">Confirmar Exclusão</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Tem certeza que deseja excluir este treino?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-danger" (click)="deleteWorkout()">Excluir</button>
+      </div>
     </div>
-          <div class="card-footer">
-              <button routerLink="/urlaqui/{{workouts.id}}" class="btn btn-outline-info">ATUALIZAR</button>
-              <button routerLink="//{{workouts.id}}" class="btn btn-outline-danger">DELETAR</button>
-          </div>
   </div>
+</div>
+
 

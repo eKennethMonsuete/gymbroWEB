@@ -1,1 +1,85 @@
-<p>create-exclusive-workout works!</p>
+<div class="container-fluid-lg marginsides">
+  <form class="row g-3" [formGroup]="formMyWorkoutRegister" (ngSubmit)="saveMyWorkout()">
+
+    <div class="col-12">
+      <label for="nome" class="form-label">Nome Do Treino:</label>
+      <input type="text" formControlName="nome" class="form-control" id="nome"
+             [ngClass]="{'is-invalid': formMyWorkoutRegister.get('nome')?.invalid && formMyWorkoutRegister.get('nome')?.touched, 'is-valid': formMyWorkoutRegister.get('nome')?.valid && formMyWorkoutRegister.get('nome')?.touched}">
+      <div *ngIf="formMyWorkoutRegister.get('nome')?.invalid && formMyWorkoutRegister.get('nome')?.touched" class="invalid-feedback">
+        Nome do treino é obrigatório.
+      </div>
+    </div>
+
+    <div class="col-12">
+      <label for="descricao" class="form-label">Observações</label>
+      <textarea formControlName="descricao" class="form-control" id="descricao" (input)="onTextChanged($event)"
+                [ngClass]="{'is-invalid': formMyWorkoutRegister.get('descricao')?.invalid && formMyWorkoutRegister.get('descricao')?.touched, 'is-valid': formMyWorkoutRegister.get('descricao')?.valid && formMyWorkoutRegister.get('descricao')?.touched}"></textarea>
+      <div *ngIf="formMyWorkoutRegister.get('descricao')?.invalid && formMyWorkoutRegister.get('descricao')?.touched" class="invalid-feedback">
+        Descrição é obrigatória e deve ter no máximo 255 caracteres.
+      </div>
+      <div class="text-end">
+        <small>{{charCount}} / 255 caracteres</small>
+      </div>
+    </div>
+
+    <div class="col-12">
+      <label for="objetivo" class="form-label">Objetivo do Treino</label>
+      <input type="text" formControlName="objetivo" class="form-control" id="objetivo" placeholder="Exemplos: Treino para hipertrofia, Treino de força, Emagrecimento "
+             [ngClass]="{'is-invalid': formMyWorkoutRegister.get('objetivo')?.invalid && formMyWorkoutRegister.get('objetivo')?.touched, 'is-valid': formMyWorkoutRegister.get('objetivo')?.valid && formMyWorkoutRegister.get('objetivo')?.touched}">
+      <div *ngIf="formMyWorkoutRegister.get('objetivo')?.invalid && formMyWorkoutRegister.get('objetivo')?.touched" class="invalid-feedback">
+        Objetivo é obrigatório.
+      </div>
+    </div>
+
+    <div class="col-12">
+      <label for="workout1" class="form-label">Treino 1</label>
+      <textarea formControlName="workout1" class="form-control" id="workout1" (input)="onTextChanged2($event)"
+                [ngClass]="{'is-invalid': formMyWorkoutRegister.get('workout1')?.invalid && formMyWorkoutRegister.get('workout1')?.touched, 'is-valid': formMyWorkoutRegister.get('workout1')?.valid && formMyWorkoutRegister.get('workout1')?.touched}"></textarea>
+      <div *ngIf="formMyWorkoutRegister.get('workout1')?.invalid && formMyWorkoutRegister.get('workout1')?.touched" class="invalid-feedback">
+        Treino 1 é obrigatório e deve ter no máximo 255 caracteres.
+      </div>
+      <div class="text-end">
+        <small>{{charCount2}} / 255 caracteres</small>
+      </div>
+    </div>
+
+    <div class="col-12">
+      <label for="workout2" class="form-label">Treino 2</label>
+      <textarea formControlName="workout2" class="form-control" id="workout2" (input)="onTextChanged3($event)"
+                [ngClass]="{'is-invalid': formMyWorkoutRegister.get('workout2')?.invalid && formMyWorkoutRegister.get('workout2')?.touched, 'is-valid': formMyWorkoutRegister.get('workout2')?.valid && formMyWorkoutRegister.get('workout2')?.touched}"></textarea>
+      <div *ngIf="formMyWorkoutRegister.get('workout2')?.invalid && formMyWorkoutRegister.get('workout2')?.touched" class="invalid-feedback">
+        Treino 2 deve ter no máximo 255 caracteres.
+      </div>
+      <div class="text-end">
+        <small>{{charCount3}} / 255 caracteres</small>
+      </div>
+    </div>
+
+    <div class="col-12">
+      <label for="workout3" class="form-label">Treino 3</label>
+      <textarea formControlName="workout3" class="form-control" id="workout3" (input)="onTextChanged4($event)"
+                [ngClass]="{'is-invalid': formMyWorkoutRegister.get('workout3')?.invalid && formMyWorkoutRegister.get('workout3')?.touched, 'is-valid': formMyWorkoutRegister.get('workout3')?.valid && formMyWorkoutRegister.get('workout3')?.touched}"></textarea>
+      <div *ngIf="formMyWorkoutRegister.get('workout3')?.invalid && formMyWorkoutRegister.get('workout3')?.touched" class="invalid-feedback">
+        Treino 3 deve ter no máximo 255 caracteres.
+      </div>
+      <div class="text-end">
+        <small>{{charCount4}} / 255 caracteres</small>
+      </div>
+    </div>
+
+    <div class="col-12">
+      <label for="autor" class="form-label">Autor</label>
+      <input type="text" formControlName="autor" class="form-control" id="autor"
+             [ngClass]="{'is-invalid': formMyWorkoutRegister.get('autor')?.invalid && formMyWorkoutRegister.get('autor')?.touched, 'is-valid': formMyWorkoutRegister.get('autor')?.valid && formMyWorkoutRegister.get('autor')?.touched}">
+      <div *ngIf="formMyWorkoutRegister.get('autor')?.invalid && formMyWorkoutRegister.get('autor')?.touched" class="invalid-feedback">
+        Autor é obrigatório.
+      </div>
+    </div>
+
+    <div class="col-12">
+      <button type="submit" class="btn btn-outline-dark btnMargin">Salvar Treino</button>
+      <button type="button" (click)="cancel()" class="btn btn-outline-danger btnMargin">Cancelar</button>
+    </div>
+
+  </form>
+</div>

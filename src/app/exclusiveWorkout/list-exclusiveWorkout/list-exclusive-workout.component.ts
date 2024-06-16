@@ -1,9 +1,11 @@
+import { DeleteExclusiveWorkoutService } from './../delete-exclusiveWorkout/delete-exclusive-workout.service';
 import { ListExclusiveWorkoutService } from './list-exclusive-workout.service';
 import { Component, OnInit } from '@angular/core';
 import { ExclusiveWorkout } from './exclusiveWorkout';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { UserUpdateService } from 'src/app/user/user-update/user-update.service';
 import { User } from './user';
+import * as bootstrap from 'bootstrap';
 
 @Component({
   selector: 'app-list-exclusive-workout',
@@ -14,6 +16,7 @@ export class ListExclusiveWorkoutComponent implements OnInit {
 
   exclusiveWorkout : ExclusiveWorkout[] = [];
   idUser: number | null = null;
+  workoutToDeleteId: number | null = null;
 
   user : User = {
     name : '',
@@ -26,14 +29,14 @@ export class ListExclusiveWorkoutComponent implements OnInit {
 
   constructor(private listExclusiveWorkoutService : ListExclusiveWorkoutService,
     private route: ActivatedRoute,
-    private userService : UserUpdateService
+    private userService : UserUpdateService,
+    private router: Router,
+    private deleteService : DeleteExclusiveWorkoutService
+
   ) { }
 
   ngOnInit(): void {
     this.getID();
-
-
-
     console.log(this.idUser);
 
   }
@@ -77,5 +80,35 @@ export class ListExclusiveWorkoutComponent implements OnInit {
     }
   }
 
+  openDeleteModal(id: number): void {
+    this.workoutToDeleteId = id;
+    const deleteModal = new bootstrap.Modal(document.getElementById('deleteModal') as HTMLElement);
+    deleteModal.show();
+  }
 
-}
+
+  deleteWorkout(): void {
+    if (this.workoutToDeleteId !== null) {
+      this.deleteService.deleteMyWorkout(this.workoutToDeleteId).subscribe(
+        response => {
+          this.exclusiveWorkout = this.exclusiveWorkout.filter(workout => workout.id !== this.workoutToDeleteId);
+          const deleteModalElement = document.getElementById('deleteModal');
+          if (deleteModalElement) {
+            const deleteModal = bootstrap.Modal.getInstance(deleteModalElement);
+            if (deleteModal) {
+              deleteModal.hide();
+            }
+          }
+        },
+        error => {
+          console.error('Erro ao deletar treino:', error);
+        }
+      );
+    }
+  }
+  }
+
+
+
+
+
