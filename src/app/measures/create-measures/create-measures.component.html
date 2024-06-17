@@ -2,7 +2,7 @@
   <form class="row g-3" [formGroup]="formMeasuresRegister" (ngSubmit)="saveMeasures()">
 
     <div class="col-12">
-      <label for="pesoAtual" class="form-label">Peso</label>
+      <label for="pesoAtual" class="form-label">Peso(kg)</label>
       <input type="number" formControlName="weight" class="form-control" id="pesoAtual" [ngClass]="{'is-invalid': formMeasuresRegister.get('weight')?.invalid && formMeasuresRegister.get('weight')?.touched, 'is-valid': formMeasuresRegister.get('weight')?.valid && formMeasuresRegister.get('weight')?.touched}">
       <div *ngIf="formMeasuresRegister.get('weight')?.invalid && formMeasuresRegister.get('weight')?.touched" class="invalid-feedback">
         Peso é obrigatório e deve ser um número positivo.
@@ -10,7 +10,7 @@
     </div>
 
     <div class="col-12">
-      <label for="cintura" class="form-label">Quadril</label>
+      <label for="cintura" class="form-label">Quadril(cm)</label>
       <input type="number" formControlName="waist" class="form-control" id="cintura" [ngClass]="{'is-invalid': formMeasuresRegister.get('waist')?.invalid && formMeasuresRegister.get('waist')?.touched, 'is-valid': formMeasuresRegister.get('waist')?.valid && formMeasuresRegister.get('waist')?.touched}">
       <div *ngIf="formMeasuresRegister.get('waist')?.invalid && formMeasuresRegister.get('waist')?.touched" class="invalid-feedback">
         Quadril é obrigatório e deve ser um número positivo.
@@ -18,7 +18,7 @@
     </div>
 
     <div class="col-md-6">
-      <label for="bicepsEsquerdo" class="form-label">Biceps Esquerdo</label>
+      <label for="bicepsEsquerdo" class="form-label">Biceps Esquerdo(cm)</label>
       <input type="number" formControlName="left_biceps" class="form-control" id="bicepsEsquerdo" [ngClass]="{'is-invalid': formMeasuresRegister.get('left_biceps')?.invalid && formMeasuresRegister.get('left_biceps')?.touched, 'is-valid': formMeasuresRegister.get('left_biceps')?.valid && formMeasuresRegister.get('left_biceps')?.touched}">
       <div *ngIf="formMeasuresRegister.get('left_biceps')?.invalid && formMeasuresRegister.get('left_biceps')?.touched" class="invalid-feedback">
         Biceps Esquerdo é obrigatório e deve ser um número positivo.
@@ -26,7 +26,7 @@
     </div>
 
     <div class="col-md-6">
-      <label for="bicepsDireiro" class="form-label">Biceps Direito</label>
+      <label for="bicepsDireiro" class="form-label">Biceps Direito(cm)</label>
       <input type="number" formControlName="right_biceps" class="form-control" id="bicepsDireito" [ngClass]="{'is-invalid': formMeasuresRegister.get('right_biceps')?.invalid && formMeasuresRegister.get('right_biceps')?.touched, 'is-valid': formMeasuresRegister.get('right_biceps')?.valid && formMeasuresRegister.get('right_biceps')?.touched}">
       <div *ngIf="formMeasuresRegister.get('right_biceps')?.invalid && formMeasuresRegister.get('right_biceps')?.touched" class="invalid-feedback">
         Biceps Direito é obrigatório e deve ser um número positivo.
@@ -34,7 +34,7 @@
     </div>
 
     <div class="col-md-6">
-      <label for="quadricepsEsquerdo" class="form-label">Quadriceps Esquerdo</label>
+      <label for="quadricepsEsquerdo" class="form-label">Quadriceps Esquerdo(cm)</label>
       <input type="number" formControlName="left_quadriceps" class="form-control" id="quadricepsEsquerdo" [ngClass]="{'is-invalid': formMeasuresRegister.get('left_quadriceps')?.invalid && formMeasuresRegister.get('left_quadriceps')?.touched, 'is-valid': formMeasuresRegister.get('left_quadriceps')?.valid && formMeasuresRegister.get('left_quadriceps')?.touched}">
       <div *ngIf="formMeasuresRegister.get('left_quadriceps')?.invalid && formMeasuresRegister.get('left_quadriceps')?.touched" class="invalid-feedback">
         Quadriceps Esquerdo é obrigatório e deve ser um número positivo.
@@ -42,7 +42,7 @@
     </div>
 
     <div class="col-md-6">
-      <label for="QuadricepsDireiro" class="form-label">Quadriceps Direito</label>
+      <label for="QuadricepsDireiro" class="form-label">Quadriceps Direito(cm)</label>
       <input type="number" formControlName="right_quadriceps" class="form-control" id="QuadricepsDireito" [ngClass]="{'is-invalid': formMeasuresRegister.get('right_quadriceps')?.invalid && formMeasuresRegister.get('right_quadriceps')?.touched, 'is-valid': formMeasuresRegister.get('right_quadriceps')?.valid && formMeasuresRegister.get('right_quadriceps')?.touched}">
       <div *ngIf="formMeasuresRegister.get('right_quadriceps')?.invalid && formMeasuresRegister.get('right_quadriceps')?.touched" class="invalid-feedback">
         Quadriceps Direito é obrigatório e deve ser um número positivo.
@@ -50,7 +50,7 @@
     </div>
 
     <div class="col-md-6">
-      <label for="panturrilhaEsquerdo" class="form-label">Panturrilha Esquerdo</label>
+      <label for="panturrilhaEsquerdo" class="form-label">Panturrilha Esquerdo(cm)</label>
       <input type="number" formControlName="left_calf" class="form-control" id="panturrilhaEsquerdo" [ngClass]="{'is-invalid': formMeasuresRegister.get('left_calf')?.invalid && formMeasuresRegister.get('left_calf')?.touched, 'is-valid': formMeasuresRegister.get('left_calf')?.valid && formMeasuresRegister.get('left_calf')?.touched}">
       <div *ngIf="formMeasuresRegister.get('left_calf')?.invalid && formMeasuresRegister.get('left_calf')?.touched" class="invalid-feedback">
         Panturrilha Esquerdo é obrigatório e deve ser um número positivo.
@@ -58,7 +58,7 @@
     </div>
 
     <div class="col-md-6">
-      <label for="panturrilhaDireiro" class="form-label">Panturrilha Direito</label>
+      <label for="panturrilhaDireiro" class="form-label">Panturrilha Direito(cm)</label>
       <input type="number" formControlName="right_calf" class="form-control" id="panturrilhaDireito" [ngClass]="{'is-invalid': formMeasuresRegister.get('right_calf')?.invalid && formMeasuresRegister.get('right_calf')?.touched, 'is-valid': formMeasuresRegister.get('right_calf')?.valid && formMeasuresRegister.get('right_calf')?.touched}">
       <div *ngIf="formMeasuresRegister.get('right_calf')?.invalid && formMeasuresRegister.get('right_calf')?.touched" class="invalid-feedback">
         Panturrilha Direito é obrigatório e deve ser um número positivo.

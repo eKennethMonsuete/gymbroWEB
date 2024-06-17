@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { DeleteMeasuresService } from './delete-measures.service';
 import { Modal } from 'bootstrap';
 
@@ -9,12 +9,13 @@ import { Modal } from 'bootstrap';
 })
 export class DeleteMeasuresComponent implements OnInit {
   measureId: number = 0;
-  @ViewChild('deleteMeasureModal') modalElement!: ElementRef;
+  @ViewChild('deleteMeasureModal', { static: true }) modalElement!: ElementRef;
   private modal!: Modal;
 
-  constructor(private router: Router,
-              private route: ActivatedRoute,
-              private deleteMeasuresService: DeleteMeasuresService) { }
+  constructor(
+    private router: Router,
+    private deleteMeasuresService: DeleteMeasuresService
+  ) { }
 
   ngOnInit(): void {
     this.deleteMeasuresService.modalTrigger$.subscribe(() => {
@@ -35,7 +36,7 @@ export class DeleteMeasuresComponent implements OnInit {
       this.deleteMeasuresService.deleteMeasure(this.measureId).subscribe(response => {
         console.log('Medida excluída com sucesso:', response);
         this.modal.hide();
-        this.router.navigate(['home']);
+        this.deleteMeasuresService.notifyMeasureDeleted();
       }, error => {
         console.error('Erro ao excluir a medida:', error);
       });
@@ -46,6 +47,5 @@ export class DeleteMeasuresComponent implements OnInit {
 
   cancel(): void {
     this.modal.hide();
-    this.router.navigate(['home']);
   }
 }

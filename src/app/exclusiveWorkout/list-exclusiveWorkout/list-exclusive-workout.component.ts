@@ -1,9 +1,9 @@
-import { DeleteExclusiveWorkoutService } from './../delete-exclusiveWorkout/delete-exclusive-workout.service';
-import { ListExclusiveWorkoutService } from './list-exclusive-workout.service';
-import { Component, OnInit } from '@angular/core';
-import { ExclusiveWorkout } from './exclusiveWorkout';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ListExclusiveWorkoutService } from './list-exclusive-workout.service';
+import { DeleteExclusiveWorkoutService } from './../delete-exclusiveWorkout/delete-exclusive-workout.service';
 import { UserUpdateService } from 'src/app/user/user-update/user-update.service';
+import { ExclusiveWorkout } from './exclusiveWorkout';
 import { User } from './user';
 import * as bootstrap from 'bootstrap';
 
@@ -13,62 +13,61 @@ import * as bootstrap from 'bootstrap';
   styleUrls: ['./list-exclusive-workout.component.css']
 })
 export class ListExclusiveWorkoutComponent implements OnInit {
-
-  exclusiveWorkout : ExclusiveWorkout[] = [];
+  exclusiveWorkout: ExclusiveWorkout[] = [];
   idUser: number | null = null;
   workoutToDeleteId: number | null = null;
 
-  user : User = {
-    name : '',
-    surname : '',
-    email : '',
-    whatsapp : '',
-    password : '',
-    secondPassword : '',
+  @ViewChild('deleteModal') deleteModal: ElementRef | undefined;
+
+  user: User = {
+    name: '',
+    surname: '',
+    email: '',
+    whatsapp: '',
+    password: '',
+    secondPassword: '',
   }
 
-  constructor(private listExclusiveWorkoutService : ListExclusiveWorkoutService,
+  constructor(
+    private listExclusiveWorkoutService: ListExclusiveWorkoutService,
     private route: ActivatedRoute,
-    private userService : UserUpdateService,
+    private userService: UserUpdateService,
     private router: Router,
-    private deleteService : DeleteExclusiveWorkoutService
-
+    private deleteService: DeleteExclusiveWorkoutService
   ) { }
 
   ngOnInit(): void {
     this.getID();
-    console.log(this.idUser);
-
+    this.deleteService.workoutDeleted$.subscribe(() => {
+      this.getMyWorkouts();
+    });
   }
 
-
-
-  getMyWorkouts(){
-
-  }
-
-  getID(){
-    //Obtém o ID do localStorage
+  getID(): void {
     const idString = localStorage.getItem('id');
     const id = idString !== null ? +idString : NaN;
     this.idUser = id;
 
     if (isNaN(id)) {
-      // Lidar com erro se o ID não for um número válido
       console.error('ID inválido:', id);
-      return;}
+      return;
+    }
 
-    this.listExclusiveWorkoutService.getMyWorkout(id).subscribe( resposta =>  {
-     // this.name = resposta.name;
-     // this.user.whatsapp = resposta.whatsapp;
+    this.getMyWorkouts();
+  }
 
-      this.exclusiveWorkout = resposta.exclusiveWorkoutDTOs;
-      console.log('MyWorkouts loaded:', this.exclusiveWorkout);
-
-    }, error => {
-      console.error('Erro :', error);
-    });
-
+  getMyWorkouts(): void {
+    if (this.idUser !== null) {
+      this.listExclusiveWorkoutService.getMyWorkout(this.idUser).subscribe(
+        resposta => {
+          this.exclusiveWorkout = resposta.exclusiveWorkoutDTOs;
+          console.log('MyWorkouts loaded:', this.exclusiveWorkout);
+        },
+        error => {
+          console.error('Erro :', error);
+        }
+      );
+    }
   }
 
   getUserId(): void {
@@ -82,23 +81,20 @@ export class ListExclusiveWorkoutComponent implements OnInit {
 
   openDeleteModal(id: number): void {
     this.workoutToDeleteId = id;
-    const deleteModal = new bootstrap.Modal(document.getElementById('deleteModal') as HTMLElement);
-    deleteModal.show();
+    if (this.deleteModal) {
+      const modalElement = this.deleteModal.nativeElement;
+      const deleteModal = new bootstrap.Modal(modalElement);
+      deleteModal.show();
+    }
   }
-
 
   deleteWorkout(): void {
     if (this.workoutToDeleteId !== null) {
       this.deleteService.deleteMyWorkout(this.workoutToDeleteId).subscribe(
         response => {
           this.exclusiveWorkout = this.exclusiveWorkout.filter(workout => workout.id !== this.workoutToDeleteId);
-          const deleteModalElement = document.getElementById('deleteModal');
-          if (deleteModalElement) {
-            const deleteModal = bootstrap.Modal.getInstance(deleteModalElement);
-            if (deleteModal) {
-              deleteModal.hide();
-            }
-          }
+          this.deleteService.notifyWorkoutDeleted();
+          this.closeModal();
         },
         error => {
           console.error('Erro ao deletar treino:', error);
@@ -106,9 +102,14 @@ export class ListExclusiveWorkoutComponent implements OnInit {
       );
     }
   }
+
+  closeModal(): void {
+    if (this.deleteModal) {
+      const modalElement = this.deleteModal.nativeElement;
+      const modalInstance = bootstrap.Modal.getInstance(modalElement);
+      if (modalInstance) {
+        modalInstance.hide();
+      }
+    }
   }
-
-
-
-
-
+}

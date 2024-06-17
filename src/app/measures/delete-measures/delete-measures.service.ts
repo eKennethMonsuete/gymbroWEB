@@ -1,6 +1,5 @@
-import { Measures } from './../create-measures/measures';
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
 import { environment } from 'src/environments/environment.dev';
 
@@ -8,14 +7,14 @@ import { environment } from 'src/environments/environment.dev';
   providedIn: 'root'
 })
 export class DeleteMeasuresService {
-
-  private API : string = environment.URL;
-
+  private API: string = environment.URL;
   private measureId: number = 0;
-
   private modalTriggerSource = new Subject<void>();
   modalTrigger$ = this.modalTriggerSource.asObservable();
-  
+
+  // Adicionar um Subject para notificar sobre a exclusão
+  private measureDeletedSource = new Subject<void>();
+  measureDeleted$ = this.measureDeletedSource.asObservable();
 
   constructor(private http: HttpClient) { }
 
@@ -27,21 +26,17 @@ export class DeleteMeasuresService {
     return this.measureId;
   }
 
-  deleteMeasure(measureId : number): Observable<any>{
+  deleteMeasure(measureId: number): Observable<any> {
     const url = `${this.API}/measures/${measureId}`;
-    return this.http.delete<any>(url, { responseType: 'text' as 'json' })
+    return this.http.delete<any>(url, { responseType: 'text' as 'json' });
   }
-
-
-  findMeasureById(id: number){
-    const url = `${this.API}/user/${id}`
-    return this.http.get<any>(url)
-  }
-
-
 
   triggerModal(): void {
     this.modalTriggerSource.next();
   }
 
+  // Método para notificar sobre a exclusão
+  notifyMeasureDeleted(): void {
+    this.measureDeletedSource.next();
+  }
 }
