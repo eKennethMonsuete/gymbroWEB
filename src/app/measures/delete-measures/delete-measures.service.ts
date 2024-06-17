@@ -15,6 +15,7 @@ export class DeleteMeasuresService {
 
   private modalTriggerSource = new Subject<void>();
   modalTrigger$ = this.modalTriggerSource.asObservable();
+  
 
   constructor(private http: HttpClient) { }
 
