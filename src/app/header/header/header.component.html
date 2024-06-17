@@ -31,7 +31,7 @@
           </ul>
         </li>
       </ul>
-      <button (click)="deslogar()" type="button" class="btn btn-outline-danger ms-auto">Sair</button>
+      <button *ngIf="isLoggedIn" (click)="deslogar()" type="button" class="btn btn-outline-danger ms-auto">Sair</button>
     </div>
   </div>
 </nav>

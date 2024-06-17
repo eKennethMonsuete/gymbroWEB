@@ -1,7 +1,7 @@
 import { TokenService } from './../../token/token.service';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { tap } from 'rxjs';
+import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { LoginResponse } from 'src/app/types/login-response.type';
 import { environment } from 'src/environments/environment.dev';
 
@@ -11,6 +11,8 @@ import { environment } from 'src/environments/environment.dev';
 export class LoginService {
 
   private API : String = environment.URL;
+
+  private loggedIn = new BehaviorSubject<boolean>(this.estaLogado());
 
   constructor( private http : HttpClient,
     private tokenService : TokenService
@@ -25,6 +27,7 @@ export class LoginService {
         localStorage.setItem("id", value.id.toString())
 
         this.tokenService.salvarToken(value.token)
+        this.loggedIn.next(true);
       })
     )
   }
@@ -38,6 +41,10 @@ export class LoginService {
 
   estaLogado(){
    return this.tokenService.possuiToken();
+  }
+
+  getLoggedInStatus(): Observable<boolean> {
+    return this.loggedIn.asObservable();
   }
 
 

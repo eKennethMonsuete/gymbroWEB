@@ -20,3 +20,21 @@
 .centered-div {
    /* Ajusta a largura máxima da div central */
 }
+
+/* Adicionando um estilo personalizado para o card com a frase */
+.card.text-center {
+  background-color: #f8f9fa; /* Cor de fundo suave */
+  border: none; /* Remover borda */
+  padding: 5px; /* Espaçamento interno */
+  margin-bottom: 20px; /* Espaçamento inferior */
+}
+
+.card-title {
+  font-size: 1.5rem; /* Tamanho da fonte do título */
+  font-weight: bold; /* Negrito */
+}
+
+.card-text {
+  font-size: 1.25rem; /* Tamanho da fonte do texto */
+}
+
